@@ -61,8 +61,55 @@ const validateProduct = (req, res, next) => {
 	next(); //Damos paso al siguiente middleware o a la response
 }
 
+//Middleware para validar los datos de una venta
+const validateVenta = (req, res, next) => {
+	const { nombre_cliente, productos } = req.body;
+	const errores = [];
+
+	//Verificamos nombre del cliente
+	if (typeof nombre_cliente !== "string" || nombre_cliente.trim().length < 2) {
+		errores.push("El nombre del cliente debe tener al menos 2 caracteres");
+	}
+
+	//Verificamos que productos sea un array con elementos
+	if (!Array.isArray(productos) || productos.length === 0) {
+		errores.push("Debe enviar al menos un producto");
+	} else {
+		//guardamos los ids de los productos para validar el envio de repetidos
+		const idsVistos = new Set();
+
+		productos.forEach((p, indice) => {
+			if (!Number.isInteger(p.producto_id) || p.producto_id <= 0) {
+				errores.push(`El producto en la posicion ${indice} tiene un id invalido`);
+			}
+
+			if (!Number.isInteger(p.cantidad) || p.cantidad <= 0) {
+				errores.push(`El producto en la posicion ${indice} tiene una cantidad invalida`);
+			}
+
+			// No permitimos el mismo producto repetido (se manda una sola vez con su cantidad)
+			if (idsVistos.has(p.producto_id)) {
+				errores.push(`El producto ${p.producto_id} esta repetido`);
+			}
+			idsVistos.add(p.producto_id);
+		});
+	}
+
+	//Si hay algun error en la lista, lo devolvemos en un 400
+	if (errores.length > 0) {
+		console.log(errores);
+		return res.status(400).json({
+			message: "Datos invalidos",
+			listaErrores: errores
+		});
+	}
+
+	next();
+}
+
 export {
     loggerurl,
     validateId,
-    validateProduct
+    validateProduct,
+    validateVenta
 }

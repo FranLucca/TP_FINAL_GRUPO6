@@ -2,7 +2,7 @@ import express from "express";
 import environments from "./src/api/config/environments.js";
 import cors from "cors";
 import { loggerurl } from "./src/api/middlewares/middlewares.js";
-import { productoRoutes } from "./src/api/routes/index.js";
+import { productoRoutes, ventaRoutes } from "./src/api/routes/index.js";
 
 const app = express();
 
@@ -25,6 +25,9 @@ app.get("/", (req, res) => {
 //RUTAS API
 //rutas de producto
 app.use("/api/productos", productoRoutes)
+
+//rutas de venta
+app.use("/api/ventas", ventaRoutes)
 
 app.listen(PORT, () => {
     console.log(`servidor corriendo en puerto https://localhost:${PORT}`)

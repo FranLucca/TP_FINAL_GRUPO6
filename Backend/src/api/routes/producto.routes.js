@@ -14,10 +14,10 @@ router.get("/active", getActiveProductos);
 router.get("/:id", validateId, getProductoById);
 
 //POST CREAR PRODUCTO
-router.post("/", validateProduct, createProducto);
+router.post("/", validateProduct , createProducto);
 
 //PUT MODIFICAR PRODUCTO
-router.put("/", validateProduct, modifyProducto);
+router.put("/", validateProduct, modifyProducto)
 
 //DELETE ELIMINAR PRODUCTO
 router.delete("/:id", validateId, deleteProducto);
