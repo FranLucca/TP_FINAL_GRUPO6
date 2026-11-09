@@ -78,7 +78,7 @@ header {
 
 /* NOMBRES DE LOS INTEGRANTES */
 .integrantes {
-    color: #c5ced9;
+    color: #f5f6f8;
     font-size: 11px;
     margin: 0;
 }
@@ -243,7 +243,7 @@ nav a:hover {
     height: 230px;
     object-fit: contain;
     padding: 15px;
-    background-color: var(--gris);
+    background-color: var(--blanco);
 }
 
 /* INFORMACIÓN DE LOS PRODUCTOS */
