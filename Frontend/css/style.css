@@ -1,0 +1,506 @@
+/* VARIABLES DE COLORES PRINCIPALES */
+:root {
+    --azul-oscuro: #101d32;
+    --azul: #183b63;
+    --celeste: #36a9e1;
+    --blanco: #ffffff;
+    --gris: #f3f5f8;
+    --texto: #252b35;
+}
+
+/* REINICIO DE ESTILOS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* DESPLAZAMIENTO SUAVE */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ESTILOS GENERALES */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background-color: var(--blanco);
+}
+
+/* ENCABEZADO PRINCIPAL */
+header {
+    background-color: var(--azul-oscuro);
+    padding: 18px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* DISTRIBUCIÓN DEL ENCABEZADO */
+.contenedor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* LOGO Y NOMBRE DE LA TIENDA */
+.contenedor-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* IMAGEN DEL LOGO */
+.contenedor-logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+/* CONTENEDOR DEL NOMBRE Y LOS INTEGRANTES */
+.info-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* NOMBRE DE LA TIENDA */
+.logo {
+    color: var(--blanco);
+    font-size: 28px;
+}
+
+/* COLOR DE TOTAL */
+.logo span {
+    color: var(--celeste);
+}
+
+/* NOMBRES DE LOS INTEGRANTES */
+.integrantes {
+    color: #c5ced9;
+    font-size: 11px;
+    margin: 0;
+}
+
+/* MENÚ DE NAVEGACIÓN */
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+/* ENLACES DEL MENÚ */
+nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* EFECTO DEL MENÚ */
+nav a:hover {
+    color: var(--celeste);
+}
+
+/* BOTÓN DEL CARRITO */
+.boton-carrito {
+    background-color: var(--celeste);
+    color: var(--blanco);
+    border: none;
+    padding: 11px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* CANTIDAD DEL CARRITO */
+#cantidad-carrito {
+    background-color: var(--azul-oscuro);
+    padding: 3px 7px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+/* BANNER PRINCIPAL */
+.banner {
+    min-height: 430px;
+    background: linear-gradient(rgba(10, 25, 45, 0.55), rgba(10, 25, 45, 0.55)),
+    url("../img/banner.png") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    color: var(--blanco);
+}
+
+/* CONTENIDO DEL BANNER */
+.contenido-banner {
+    max-width: 600px;
+}
+
+/* SUBTÍTULOS */
+.subtitulo {
+    color: var(--celeste);
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+/* TÍTULO DEL BANNER */
+.contenido-banner h2 {
+    font-size: 46px;
+    margin-bottom: 18px;
+}
+
+/* TEXTO DEL BANNER */
+.contenido-banner p {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* BOTÓN VER PRODUCTOS */
+.boton-principal {
+    display: inline-block;
+    background-color: var(--celeste);
+    color: var(--blanco);
+    padding: 13px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* EFECTO DEL BOTÓN PRINCIPAL */
+.boton-principal:hover {
+    background-color: var(--azul);
+}
+
+/* PRESENTACIÓN DE LA TIENDA */
+.presentacion {
+    text-align: center;
+    padding: 45px 20px 20px;
+}
+
+/* TÍTULO DE PRESENTACIÓN */
+.presentacion h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--azul-oscuro);
+}
+
+/* TEXTO DE PRESENTACIÓN */
+.presentacion p {
+    color: #777777;
+}
+
+/* SECCIONES DE PRODUCTOS */
+.seccion-productos {
+    padding: 55px 7%;
+}
+
+/* TÍTULOS DE LAS SECCIONES */
+.titulo-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 30px;
+}
+
+/* NOMBRE DE CADA CATEGORÍA */
+.titulo-seccion h2 {
+    font-size: 32px;
+    color: var(--azul-oscuro);
+}
+
+/* DESCRIPCIÓN DE LAS CATEGORÍAS */
+.titulo-seccion span {
+    color: #777777;
+}
+
+/* GRILLA DE PRODUCTOS */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+/* TARJETAS DE PRODUCTOS */
+.tarjeta-producto {
+    background-color: var(--blanco);
+    border: 1px solid #e5e8ed;
+    border-radius: 9px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+/* EFECTO DE LAS TARJETAS */
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+/* IMÁGENES DE PRODUCTOS */
+.imagen-producto {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    padding: 15px;
+    background-color: var(--gris);
+}
+
+/* INFORMACIÓN DE LOS PRODUCTOS */
+.info-producto {
+    padding: 18px;
+}
+
+/* NOMBRE DEL PRODUCTO */
+.info-producto h3 {
+    font-size: 16px;
+    min-height: 40px;
+    margin-bottom: 12px;
+}
+
+/* PRECIO DE LOS PRODUCTOS */
+.precio-producto {
+    color: var(--azul);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* BOTÓN AGREGAR AL CARRITO */
+.boton-agregar {
+    width: 100%;
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    border: none;
+    padding: 11px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* EFECTO DEL BOTÓN AGREGAR */
+.boton-agregar:hover {
+    background-color: var(--celeste);
+}
+
+/* MENSAJE DE CARGA */
+.mensaje-carga {
+    color: #777777;
+    grid-column: 1 / -1;
+    padding: 20px 0;
+}
+
+/* SECCIÓN DEL CARRITO */
+.seccion-carrito {
+    background-color: var(--gris);
+    padding: 45px 7%;
+}
+
+/* TÍTULO DEL CARRITO */
+.seccion-carrito h2 {
+    color: var(--azul-oscuro);
+    margin-bottom: 20px;
+}
+
+/* PRODUCTOS AGREGADOS AL CARRITO */
+.item-carrito {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: var(--blanco);
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+}
+
+/* IMAGEN DEL PRODUCTO EN EL CARRITO */
+.imagen-carrito {
+    width: 180px;
+    height: 160px;
+    object-fit: contain;
+    background-color: var(--gris);
+}
+
+/* INFORMACIÓN DEL PRODUCTO */
+.info-carrito {
+    flex: 1;
+    padding: 10px 0;
+}
+
+/* NOMBRE DEL PRODUCTO EN EL CARRITO */
+.info-carrito h3 {
+    color: var(--azul-oscuro);
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+/* PRECIO UNITARIO */
+.info-carrito p {
+    margin-bottom: 12px;
+    color: #555555;
+}
+
+/* CONTENEDOR DEL SELECTOR DE CANTIDAD */
+.cantidad-carrito {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* SELECTOR DE CANTIDAD */
+.cantidad-carrito select,
+.panel-eliminar select {
+    padding: 10px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: var(--blanco);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* ACCIONES DEL CARRITO */
+.acciones-carrito {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-width: 180px;
+    padding: 10px 0;
+}
+
+/* SUBTOTAL DEL PRODUCTO */
+.subtotal-carrito {
+    color: var(--azul-oscuro);
+    font-size: 20px;
+}
+
+/* BOTÓN ELIMINAR */
+.boton-eliminar {
+    background: none;
+    border: none;
+    color: #555555;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* EFECTO DEL BOTÓN ELIMINAR */
+.boton-eliminar:hover {
+    color: #d94141;
+}
+
+/* PANEL PARA SELECCIONAR CUÁNTAS UNIDADES ELIMINAR */
+.panel-eliminar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--gris);
+    border-radius: 5px;
+}
+
+/* TEXTO DEL PANEL DE ELIMINACIÓN */
+.panel-eliminar label {
+    font-size: 13px;
+}
+
+/* BOTONES DE CONFIRMAR Y CANCELAR */
+.botones-eliminar {
+    display: flex;
+    gap: 8px;
+}
+
+/* ESTILOS DE LOS BOTONES DEL PANEL */
+.botones-eliminar button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+}
+
+/* BOTÓN CANCELAR */
+.botones-eliminar button:last-child {
+    background-color: #777777;
+}
+
+/* TOTAL DE LA COMPRA */
+.total-carrito {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 20px;
+    color: var(--azul-oscuro);
+}
+
+/* PIE DE PÁGINA */
+footer {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 30px 15px;
+    line-height: 1.8;
+}
+
+/* TÍTULO DEL PIE DE PÁGINA */
+footer h2 {
+    color: var(--celeste);
+}
+
+/* ADAPTACIÓN PARA PANTALLAS MEDIANAS */
+@media (max-width: 900px) {
+    .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item-carrito {
+        flex-wrap: wrap;
+    }
+}
+
+/* ADAPTACIÓN PARA CELULARES */
+@media (max-width: 600px) {
+    .contenedor-header {
+        flex-direction: column;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .contenido-banner h2 {
+        font-size: 34px;
+    }
+
+    .titulo-seccion {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .item-carrito {
+        flex-direction: column;
+    }
+
+    .imagen-carrito {
+        width: 100%;
+        height: 200px;
+    }
+
+    .acciones-carrito {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .panel-eliminar {
+        align-items: flex-start;
+    }
+}

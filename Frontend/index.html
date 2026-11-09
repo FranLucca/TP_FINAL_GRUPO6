@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración de la página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutbolTotal | Tienda Deportiva</title>
+
+    <!-- Archivo de estilos -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header>
+        <div class="contenedor-header">
+
+            <!-- Logo, nombre de la tienda e integrantes -->
+            <div class="contenedor-logo">
+                <img src="img/logo.png" alt="Logo FutbolTotal">
+
+                <div class="info-logo">
+                    <h1 class="logo">Futbol<span>Total</span></h1>
+                    <p class="integrantes">Luca Kosinski | Martino Monsalvo | Franco Lucca</p>
+                </div>
+            </div>
+
+            <!-- Menú de navegación -->
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#camisetas">Camisetas</a>
+                <a href="#botines">Botines</a>
+            </nav>
+
+            <!-- Botón del carrito -->
+            <button id="btn-carrito" class="boton-carrito">
+                Carrito <span id="cantidad-carrito">0</span>
+            </button>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- BANNER PRINCIPAL -->
+        <section id="inicio" class="banner">
+            <div class="contenido-banner">
+                <p class="subtitulo">TIENDA DEPORTIVA</p>
+                <h2>Viví tu pasión por el fútbol</h2>
+                <p>Encontrá las camisetas y los botines que buscás.</p>
+                <a href="#camisetas" class="boton-principal">Ver productos</a>
+            </div>
+        </section>
+
+        <!-- PRESENTACIÓN DE LA TIENDA -->
+        <section class="presentacion">
+            <h2>Bienvenido a FutbolTotal</h2>
+            <p>Todo lo que necesitás para vivir el fútbol.</p>
+        </section>
+
+        <!-- SECCIÓN DE CAMISETAS -->
+        <section id="camisetas" class="seccion-productos">
+            <div class="titulo-seccion">
+                <div>
+                    <p class="subtitulo">NUESTRA COLECCIÓN</p>
+                    <h2>Camisetas</h2>
+                </div>
+                <span>Equipaciones de tus equipos favoritos</span>
+            </div>
+
+            <!-- Productos obtenidos desde la API -->
+            <div id="contenedor-camisetas" class="productos-grid">
+                <p class="mensaje-carga">Cargando camisetas...</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE BOTINES -->
+        <section id="botines" class="seccion-productos">
+            <div class="titulo-seccion">
+                <div>
+                    <p class="subtitulo">PARA LA CANCHA</p>
+                    <h2>Botines</h2>
+                </div>
+                <span>Encontrá tu próximo par</span>
+            </div>
+
+            <!-- Productos obtenidos desde la API -->
+            <div id="contenedor-botines" class="productos-grid">
+                <p class="mensaje-carga">Cargando botines...</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DEL CARRITO -->
+        <section id="carrito" class="seccion-carrito">
+            <h2>Mi carrito</h2>
+
+            <!-- Productos agregados al carrito -->
+            <div id="contenedor-carrito">
+                <p>Tu carrito está vacío.</p>
+            </div>
+
+            <!-- Total de la compra -->
+            <div class="total-carrito">
+                <strong>Total: $<span id="total-carrito">0</span></strong>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <h2>FutbolTotal</h2>
+        <p>Tu pasión, tu equipación.</p>
+        <p>© 2026 FutbolTotal - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Archivos JavaScript -->
+    <script src="js/productos.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

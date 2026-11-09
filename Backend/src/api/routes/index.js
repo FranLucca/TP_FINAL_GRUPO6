@@ -1,0 +1,8 @@
+//Archivo centralizador de rutas
+//Importa las rutas con un nombre y las exporta con otro
+
+import productoRoutes from "./producto.routes.js"
+
+export {
+    productoRoutes
+}
