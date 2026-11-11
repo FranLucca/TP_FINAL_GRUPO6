@@ -1,0 +1,170 @@
+/* VARIABLES DE COLORES PRINCIPALES */
+:root {
+    --azul-oscuro: #101d32;
+    --azul: #183b63;
+    --celeste: #36a9e1;
+    --blanco: #ffffff;
+    --gris: #f3f5f8;
+    --texto: #252b35;
+}
+
+/* REINICIO DE ESTILOS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* DESPLAZAMIENTO SUAVE */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ESTILOS GENERALES */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background-color: var(--blanco);
+}
+
+/* ENCABEZADO PRINCIPAL */
+header {
+    background-color: var(--azul-oscuro);
+    padding: 18px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* DISTRIBUCIÓN DEL ENCABEZADO */
+.contenedor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* LOGO Y NOMBRE DE LA TIENDA */
+.contenedor-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* IMAGEN DEL LOGO */
+.contenedor-logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+/* CONTENEDOR DEL NOMBRE Y LOS INTEGRANTES */
+.info-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* NOMBRE DE LA TIENDA */
+.logo {
+    color: var(--blanco);
+    font-size: 28px;
+}
+
+/* COLOR DE TOTAL */
+.logo span {
+    color: var(--celeste);
+}
+
+/* NOMBRES DE LOS INTEGRANTES */
+.integrantes {
+    color: #c5ced9;
+    font-size: 11px;
+    margin: 0;
+}
+
+/* MENÚ DE NAVEGACIÓN */
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+/* ENLACES DEL MENÚ */
+nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* EFECTO DEL MENÚ */
+nav a:hover {
+    color: var(--celeste);
+}
+
+/* PIE DE PÁGINA */
+footer {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 30px 15px;
+    line-height: 1.8;
+}
+
+/* TÍTULO DEL PIE DE PÁGINA */
+footer h2 {
+    color: var(--celeste);
+}
+
+/* ADAPTACIÓN PARA PANTALLAS MEDIANAS */
+@media (max-width: 900px) {
+    .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item-carrito {
+        flex-wrap: wrap;
+    }
+}
+
+/* ADAPTACIÓN PARA CELULARES */
+@media (max-width: 600px) {
+    .contenedor-header {
+        flex-direction: column;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .contenido-banner h2 {
+        font-size: 34px;
+    }
+
+    .titulo-seccion {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .item-carrito {
+        flex-direction: column;
+    }
+
+    .imagen-carrito {
+        width: 100%;
+        height: 200px;
+    }
+
+    .acciones-carrito {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .panel-eliminar {
+        align-items: flex-start;
+    }
+}

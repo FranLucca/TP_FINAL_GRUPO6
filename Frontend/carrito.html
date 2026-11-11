@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutbolTotal carrito</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carrito.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor-header">
+
+            <!-- Logo, nombre de la tienda e integrantes -->
+            <div class="contenedor-logo">
+                <img src="img/logo.png" alt="Logo FutbolTotal">
+
+                <div class="info-logo">
+                    <h1 class="logo">Futbol<span>Total</span></h1>
+                    <p class="integrantes">Luca Kosinski | Martino Monsalvo | Franco Lucca</p>
+                </div>
+            </div>
+
+            <!-- Menú de navegación -->
+            <nav>
+                <a href="index.html">Inicio</a>
+            </nav>
+    </header>
+
+    <main>
+        <section id="carrito" class="seccion-carrito">
+            <h2>Mi carrito</h2>
+
+            <ul id="contenedor-carrito">
+
+            </ul>
+
+            <div class="total-carrito">
+                <span>Total a pagar:</span>
+                <span id="total-carrito-txt">$0</span>
+            </div>
+
+            <a href="index.html">Seguir comprando</a>
+
+            <button type="button" onclick="procesarCompraFinal()" class="boton-final">Obtener ticket de compra</button>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <h2>FutbolTotal</h2>
+        <p>Tu pasión, tu equipación.</p>
+        <p>© 2026 FutbolTotal - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/carrito.js"></script>
+</body>
+</html>

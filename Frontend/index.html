@@ -8,6 +8,7 @@
 
     <!-- Archivo de estilos -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
@@ -33,9 +34,9 @@
             </nav>
 
             <!-- Botón del carrito -->
-            <button id="btn-carrito" class="boton-carrito">
+            <a href="carrito.html" id="btn-carrito" class="boton-carrito">
                 Carrito <span id="cantidad-carrito">0</span>
-            </button>
+            </a>
 
         </div>
     </header>
@@ -55,7 +56,7 @@
         <!-- PRESENTACIÓN DE LA TIENDA -->
         <section class="presentacion">
             <h2>Bienvenido a FutbolTotal</h2>
-            <p>Preparate para deslumbrar dentro de la cancha</p>
+            <p>Todo lo que necesitás para vivir el fútbol.</p>
         </section>
 
         <!-- SECCIÓN DE CAMISETAS -->
@@ -65,6 +66,7 @@
                     <p class="subtitulo">NUESTRA COLECCIÓN</p>
                     <h2>Camisetas</h2>
                 </div>
+                <span>Equipaciones de tus equipos favoritos</span>
             </div>
 
             <!-- Productos obtenidos desde la API -->
@@ -80,26 +82,12 @@
                     <p class="subtitulo">PARA LA CANCHA</p>
                     <h2>Botines</h2>
                 </div>
+                <span>Encontrá tu próximo par</span>
             </div>
 
             <!-- Productos obtenidos desde la API -->
             <div id="contenedor-botines" class="productos-grid">
                 <p class="mensaje-carga">Cargando botines...</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓN DEL CARRITO -->
-        <section id="carrito" class="seccion-carrito">
-            <h2>Mi carrito</h2>
-
-            <!-- Productos agregados al carrito -->
-            <div id="contenedor-carrito">
-                <p>Tu carrito está vacío.</p>
-            </div>
-
-            <!-- Total de la compra -->
-            <div class="total-carrito">
-                <strong>Total: $<span id="total-carrito">0</span></strong>
             </div>
         </section>
 

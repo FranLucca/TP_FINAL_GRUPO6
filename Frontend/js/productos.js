@@ -1,6 +1,9 @@
 // URL del backend donde se encuentran los productos
 const URL_API = "http://localhost:3000/api/productos";
 
+// Inicializacion del carrito
+let carrito = JSON.parse(localStorage.getItem("carrito-productos")) || [];
+
 // Array donde se almacenan los productos obtenidos de la API
 let productos = [];
 
@@ -80,6 +83,45 @@ const formatearPrecio = (precio) => {
         maximumFractionDigits: 0
     });
 };
+
+//FUNCIONES RELACIONADAS CON EL CARRITO
+
+function agregarAlCarrito(id) {
+    const idNumero = Number(id);
+
+    const producto = productos.find(p => p.id === idNumero);
+    if (!producto) return;
+    
+    const existeEnCarrito = carrito.find(item => item.id === idNumero);
+
+    if (existeEnCarrito) {
+        existeEnCarrito.cantidad++;
+    } else {
+        carrito.push({
+            id: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            imagen: producto.imagen,
+            cantidad: 1
+        });
+    }
+
+    sincronizarStorage();
+
+    actualizarContador();
+}
+
+function sincronizarStorage() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function actualizarContador() {
+    const contador = document.getElementById("cantidad-carrito");
+    contador.textContent = carrito.reduce((total, p) => total + p.cantidad, 0);
+}
+
+//Actualizamos el contador del boton superior del carrito
+actualizarContador();
 
 // Ejecutamos la función para obtener los productos
 obtenerProductos();
