@@ -1,76 +1,58 @@
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FutbolTotal | Carrito</title>
-
-    <!-- Estilos -->
+    <title>FutbolTotal carrito</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carrito.css">
 </head>
 <body>
+    <header>
+        <div class="contenedor-header">
 
-    <!-- ENCABEZADO PRINCIPAL -->
-    <header class="encabezado">
-        <div class="marca">
-            <a href="index.html">
+            <!-- Logo, nombre de la tienda e integrantes -->
+            <div class="contenedor-logo">
                 <img src="img/logo.png" alt="Logo FutbolTotal">
-            </a>
 
-            <div>
-                <h1>Futbol<span>Total</span></h1>
-                <small>Lucas Kosinski | Martino Monsalvo | Franco Lucca</small>
+                <div class="info-logo">
+                    <h1 class="logo">Futbol<span>Total</span></h1>
+                    <p class="integrantes">Luca Kosinski | Martino Monsalvo | Franco Lucca</p>
+                </div>
             </div>
-        </div>
 
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="index.html#camisetas">Camisetas</a>
-            <a href="index.html#botines">Botines</a>
-        </nav>
-
-        <a href="carrito.html" class="boton-carrito">
-            Carrito (<span id="cantidad-carrito">0</span>)
-        </a>
+            <!-- Menú de navegación -->
+            <nav>
+                <a href="index.html">Inicio</a>
+            </nav>
     </header>
 
     <main>
+        <section id="carrito" class="seccion-carrito">
+            <h2>Mi carrito</h2>
 
-        <!-- CARRITO DE COMPRAS -->
-        <section class="seccion-carrito">
-            <h1>Mi carrito</h1>
+            <ul id="contenedor-carrito">
 
-            <ul id="contenedor-carrito"></ul>
+            </ul>
 
-            <!-- TOTAL -->
             <div class="total-carrito">
-                <h2>
-                    Total: <span id="total-carrito-txt">$0</span>
-                </h2>
+                <span>Total a pagar:</span>
+                <span id="total-carrito-txt">$0</span>
             </div>
 
-            <!-- BOTONES -->
-            <div class="acciones-compra">
-                <a href="index.html" class="boton-seguir">
-                    Seguir comprando
-                </a>
+            <a href="index.html">Seguir comprando</a>
 
-                <button type="button" class="boton-final" onclick="procesarCompraFinal()">
-                    Finalizar compra
-                </button>
-            </div>
+            <button type="button" onclick="procesarCompraFinal()" class="boton-final">Obtener ticket de compra</button>
         </section>
-
     </main>
 
     <!-- PIE DE PÁGINA -->
     <footer>
-        <p>&copy; 2026 FutbolTotal - Todos los derechos reservados.</p>
+        <h2>FutbolTotal</h2>
+        <p>Tu pasión, tu equipación.</p>
+        <p>© 2026 FutbolTotal - Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script src="js/carrito.js"></script>
-
 </body>
 </html>

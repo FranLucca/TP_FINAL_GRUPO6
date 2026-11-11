@@ -1,31 +1,36 @@
-
-// URL del Backend
+// URL del backend donde se encuentran los productos
 const URL_API = "http://localhost:3000/api/productos";
 
-// Recuperamos el carrito guardado
+// Inicializacion del carrito
 let carrito = JSON.parse(localStorage.getItem("carrito-productos")) || [];
 
-// Array de productos obtenidos desde la API
+// Array donde se almacenan los productos obtenidos de la API
 let productos = [];
 
 // FUNCIÓN PARA OBTENER LOS PRODUCTOS
 const obtenerProductos = async () => {
     try {
+        // Realizamos una solicitud al backend
         const respuesta = await fetch(`${URL_API}/active`);
 
         if (!respuesta.ok) {
             throw new Error("No se pudieron obtener los productos");
         }
 
+        // Convertimos la respuesta a formato JSON
         const datos = await respuesta.json();
+
+        // Guardamos los productos obtenidos
         productos = datos.payload;
 
+        // Mostramos los productos según su categoría
         mostrarProductos("camiseta", "contenedor-camisetas");
         mostrarProductos("botin", "contenedor-botines");
 
     } catch (error) {
         console.log("Error al obtener productos:", error);
 
+        // Mostramos un mensaje si ocurre un error
         document.querySelector("#contenedor-camisetas").innerHTML =
             "<p>No se pudieron cargar las camisetas.</p>";
 
@@ -38,6 +43,7 @@ const obtenerProductos = async () => {
 const mostrarProductos = (categoria, idContenedor) => {
     const contenedor = document.querySelector(`#${idContenedor}`);
 
+    // Filtramos los productos según su categoría
     const productosFiltrados = productos.filter(producto => producto.categoria === categoria);
 
     if (productosFiltrados.length === 0) {
@@ -47,6 +53,7 @@ const mostrarProductos = (categoria, idContenedor) => {
 
     let contenido = "";
 
+    // Recorremos los productos para crear sus tarjetas
     productosFiltrados.forEach(producto => {
         contenido += `
             <article class="tarjeta-producto">
@@ -54,6 +61,7 @@ const mostrarProductos = (categoria, idContenedor) => {
 
                 <div class="info-producto">
                     <h3>${producto.nombre}</h3>
+
                     <p class="precio-producto">${formatearPrecio(producto.precio)}</p>
 
                     <button class="boton-agregar" onclick="agregarAlCarrito(${producto.id})">
@@ -67,7 +75,7 @@ const mostrarProductos = (categoria, idContenedor) => {
     contenedor.innerHTML = contenido;
 };
 
-// FUNCIÓN PARA FORMATEAR PRECIOS
+// FUNCIÓN PARA FORMATEAR LOS PRECIOS
 const formatearPrecio = (precio) => {
     return Number(precio).toLocaleString("es-AR", {
         style: "currency",
@@ -76,14 +84,15 @@ const formatearPrecio = (precio) => {
     });
 };
 
-// FUNCIÓN PARA AGREGAR PRODUCTOS AL CARRITO
+//FUNCIONES RELACIONADAS CON EL CARRITO
+
 function agregarAlCarrito(id) {
     const idNumero = Number(id);
-    const producto = productos.find(p => Number(p.id) === idNumero);
 
+    const producto = productos.find(p => p.id === idNumero);
     if (!producto) return;
-
-    const existeEnCarrito = carrito.find(item => Number(item.id) === idNumero);
+    
+    const existeEnCarrito = carrito.find(item => item.id === idNumero);
 
     if (existeEnCarrito) {
         existeEnCarrito.cantidad++;
@@ -91,34 +100,28 @@ function agregarAlCarrito(id) {
         carrito.push({
             id: producto.id,
             nombre: producto.nombre,
-            precio: Number(producto.precio),
+            precio: producto.precio,
             imagen: producto.imagen,
             cantidad: 1
         });
     }
 
     sincronizarStorage();
+
     actualizarContador();
 }
 
-// FUNCIÓN PARA GUARDAR EL CARRITO
 function sincronizarStorage() {
-    localStorage.setItem("carrito-productos", JSON.stringify(carrito));
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-// FUNCIÓN PARA ACTUALIZAR EL CONTADOR
 function actualizarContador() {
     const contador = document.getElementById("cantidad-carrito");
-
-    if (contador) {
-        contador.textContent = carrito.reduce((total, producto) => {
-            return total + Number(producto.cantidad);
-        }, 0);
-    }
+    contador.textContent = carrito.reduce((total, p) => total + p.cantidad, 0);
 }
 
-// ACTUALIZAMOS EL CONTADOR AL INICIAR
+//Actualizamos el contador del boton superior del carrito
 actualizarContador();
 
-// OBTENEMOS LOS PRODUCTOS
+// Ejecutamos la función para obtener los productos
 obtenerProductos();
