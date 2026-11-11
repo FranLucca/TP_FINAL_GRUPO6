@@ -1,170 +1,255 @@
-/* VARIABLES DE COLORES PRINCIPALES */
-:root {
-    --azul-oscuro: #101d32;
-    --azul: #183b63;
-    --celeste: #36a9e1;
-    --blanco: #ffffff;
-    --gris: #f3f5f8;
-    --texto: #252b35;
-}
 
-/* REINICIO DE ESTILOS */
+/* ESTILOS GENERALES */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* DESPLAZAMIENTO SUAVE */
-html {
-    scroll-behavior: smooth;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #101f35;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* ESTILOS GENERALES */
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--texto);
-    background-color: var(--blanco);
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* ENCABEZADO PRINCIPAL */
-header {
-    background-color: var(--azul-oscuro);
-    padding: 18px 6%;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-/* DISTRIBUCIÓN DEL ENCABEZADO */
-.contenedor-header {
-    display: flex;
-    justify-content: space-between;
+.encabezado {
+    width: 100%;
+    height: 67px;
+    background-color: #101f35;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    gap: 20px;
+    padding: 5px 6%;
 }
 
-/* LOGO Y NOMBRE DE LA TIENDA */
-.contenedor-logo {
+.marca {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
-/* IMAGEN DEL LOGO */
-.contenedor-logo img {
-    width: 55px;
-    height: 55px;
+.marca img {
+    width: 35px;
+    height: 35px;
     object-fit: contain;
 }
 
-/* CONTENEDOR DEL NOMBRE Y LOS INTEGRANTES */
-.info-logo {
+.marca h1 {
+    color: #ffffff;
+    font-size: 21px;
+}
+
+.marca h1 span {
+    color: #35a9dc;
+}
+
+.marca small {
+    display: block;
+    color: #cbd5e1;
+    font-size: 7px;
+    margin-top: 2px;
+}
+
+.encabezado nav {
     display: flex;
-    flex-direction: column;
-    gap: 3px;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
 }
 
-/* NOMBRE DE LA TIENDA */
-.logo {
-    color: var(--blanco);
-    font-size: 28px;
-}
-
-/* COLOR DE TOTAL */
-.logo span {
-    color: var(--celeste);
-}
-
-/* NOMBRES DE LOS INTEGRANTES */
-.integrantes {
-    color: #c5ced9;
-    font-size: 11px;
-    margin: 0;
-}
-
-/* MENÚ DE NAVEGACIÓN */
-nav {
-    display: flex;
-    gap: 30px;
-}
-
-/* ENLACES DEL MENÚ */
-nav a {
-    color: var(--blanco);
-    text-decoration: none;
+.encabezado nav a {
+    color: #ffffff;
+    font-size: 12px;
     font-weight: bold;
 }
 
-/* EFECTO DEL MENÚ */
-nav a:hover {
-    color: var(--celeste);
+.encabezado nav a:hover {
+    color: #35a9dc;
 }
 
-/* PIE DE PÁGINA */
+.boton-carrito {
+    justify-self: end;
+    background-color: #35a9dc;
+    color: #ffffff;
+    padding: 8px 13px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.boton-carrito:hover {
+    background-color: #168bc2;
+}
+
+/* FOOTER */
 footer {
-    background-color: var(--azul-oscuro);
-    color: var(--blanco);
+    width: 100%;
+    background-color: #071c36;
+    color: #ffffff;
     text-align: center;
-    padding: 30px 15px;
-    line-height: 1.8;
+    padding: 25px 15px;
+    margin-top: 35px;
 }
 
-/* TÍTULO DEL PIE DE PÁGINA */
-footer h2 {
-    color: var(--celeste);
+/* CARRITO */
+.seccion-carrito {
+    width: 90%;
+    max-width: 1100px;
+    margin: 45px auto;
 }
 
-/* ADAPTACIÓN PARA PANTALLAS MEDIANAS */
-@media (max-width: 900px) {
-    .productos-grid {
-        grid-template-columns: repeat(2, 1fr);
+.seccion-carrito h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+#contenedor-carrito {
+    list-style: none;
+    padding: 0;
+}
+
+.items-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 18px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e5ec;
+    border-radius: 8px;
+}
+
+.imagen-item {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.nombre-item {
+    flex: 1;
+    font-weight: bold;
+}
+
+.botones-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.botones-cantidad button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #35a9dc;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.boton-eliminar {
+    border: none;
+    background-color: #d93636;
+    color: #ffffff;
+    padding: 9px 13px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.carrito-vacio {
+    background-color: #ffffff;
+    padding: 25px;
+    border: 1px solid #e0e5ec;
+    border-radius: 8px;
+}
+
+.total-carrito {
+    text-align: right;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f3f6fb;
+    border-radius: 8px;
+}
+
+.acciones-compra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.boton-seguir,
+.boton-final {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-seguir {
+    background-color: #101f35;
+    color: #ffffff;
+}
+
+.boton-final {
+    background-color: #35a9dc;
+    color: #ffffff;
+}
+
+.boton-seguir:hover,
+.boton-final:hover {
+    opacity: 0.85;
+}
+
+/* RESPONSIVE */
+@media (max-width: 850px) {
+    .encabezado {
+        height: auto;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 12px;
+        padding: 12px;
     }
 
-    .item-carrito {
+    .encabezado nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .boton-carrito {
+        justify-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .items-carrito {
         flex-wrap: wrap;
     }
-}
 
-/* ADAPTACIÓN PARA CELULARES */
-@media (max-width: 600px) {
-    .contenedor-header {
+    .acciones-compra {
         flex-direction: column;
+        align-items: stretch;
     }
 
-    nav {
-        gap: 15px;
-    }
-
-    .contenido-banner h2 {
-        font-size: 34px;
-    }
-
-    .titulo-seccion {
-        flex-direction: column;
-        align-items: start;
-        gap: 10px;
-    }
-
-    .productos-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .item-carrito {
-        flex-direction: column;
-    }
-
-    .imagen-carrito {
-        width: 100%;
-        height: 200px;
-    }
-
-    .acciones-carrito {
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    .panel-eliminar {
-        align-items: flex-start;
+    .boton-seguir,
+    .boton-final {
+        text-align: center;
     }
 }
