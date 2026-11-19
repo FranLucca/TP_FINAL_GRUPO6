@@ -58,7 +58,7 @@ a {
 .marca small {
     display: block;
     color: #cbd5e1;
-    font-size: 7px;
+    font-size: 12px;
     margin-top: 2px;
 }
 
@@ -90,7 +90,7 @@ a {
 }
 
 .boton-carrito:hover {
-    background-color: #168bc2;
+    background-color: #35a9dc;
 }
 
 /* FOOTER */
@@ -252,4 +252,4 @@ footer {
     .boton-final {
         text-align: center;
     }
-}
+}   

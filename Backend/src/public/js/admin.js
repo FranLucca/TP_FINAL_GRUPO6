@@ -1,5 +1,4 @@
-
-const URL_API = "http://localhost:3000/api/productos";
+const URL_API = "/api/productos";
 let productos = [];
 
 // OBTENER TODOS LOS PRODUCTOS
@@ -14,17 +13,22 @@ const obtenerProductos = async () => {
         }
 
         const datos = await respuesta.json();
-        productos = datos.payload || [];
+        productos = datos.payload || datos;
 
         mostrarProductos();
     } catch (error) {
         console.log("Error al obtener productos:", error);
-        tabla.innerHTML = `<tr><td colspan="7">${error.message}</td></tr>`;
+        tabla.innerHTML = `
+            <tr id="fila-sin-resultados" class="fila-oculta">
+                <td colspan="7">No se encontraron productos.</td>
+            </tr>
+            <tr><td colspan="7" style="color: red; text-align: center;">${error.message}</td></tr>
+        `;
         actualizarEstadisticas();
     }
 };
 
-// MOSTRAR LOS PRODUCTOS
+// MOSTRAR LOS PRODUCTOS Y FILTRAR
 const mostrarProductos = () => {
     const tabla = document.querySelector("#tabla-productos");
     const busqueda = document.querySelector("#buscar-producto").value.toLowerCase();
@@ -39,40 +43,49 @@ const mostrarProductos = () => {
         return coincideNombre && coincideCategoria && coincideEstado;
     });
 
-    if (productosFiltrados.length === 0) {
-        tabla.innerHTML = `<tr><td colspan="7">No se encontraron productos.</td></tr>`;
-    } else {
-        let contenido = "";
+    // Fila de sin resultados obligatoria para que el CSS y los filtros operen bien
+    let contenido = `
+        <tr id="fila-sin-resultados" class="${productosFiltrados.length === 0 ? '' : 'fila-oculta'}">
+            <td colspan="7">No se encontraron productos con esos filtros.</td>
+        </tr>
+    `;
 
-        productosFiltrados.forEach(producto => {
-            const estaActivo = Number(producto.activo) === 1;
+    productosFiltrados.forEach(producto => {
+        const estaActivo = Number(producto.activo) === 1;
 
-            contenido += `
-                <tr>
-                    <td>${producto.id}</td>
-                    <td><img class="imagen-tabla" src="${escaparHTML(producto.imagen)}" alt="${escaparHTML(producto.nombre)}"></td>
-                    <td>${escaparHTML(producto.nombre)}</td>
-                    <td>${producto.categoria === "camiseta" ? "Camiseta" : "Botín"}</td>
-                    <td>${formatearPrecio(producto.precio)}</td>
-                    <td>
-                        <span class="${estaActivo ? "estado-activo" : "estado-inactivo"}">
-                            ${estaActivo ? "Activo" : "Inactivo"}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="boton-editar" data-accion="editar" data-id="${producto.id}">Editar</button>
-                        <button class="boton-estado" data-accion="estado" data-id="${producto.id}">
-                            ${estaActivo ? "Desactivar" : "Activar"}
-                        </button>
-                        <button class="boton-eliminar" data-accion="eliminar" data-id="${producto.id}">Eliminar</button>
-                    </td>
-                </tr>
-            `;
-        });
+        contenido += `
+            <tr data-id="${producto.id}"
+                data-nombre="${producto.nombre}"
+                data-imagen="${producto.imagen}"
+                data-categoria="${producto.categoria}"
+                data-precio="${producto.precio}"
+                data-activo="${estaActivo ? 1 : 0}">
+                <td>${producto.id}</td>
+                <td>
+                    <img class="imagen-tabla"
+                         src="/${producto.imagen}"
+                         alt="${producto.nombre}">
+                </td>
+                <td>${producto.nombre}</td>
+                <td>${producto.categoria === "camiseta" ? "Camiseta" : "Botín"}</td>
+                <td>${formatearPrecio(producto.precio)}</td>
+                <td>
+                    <span class="${estaActivo ? "estado-activo" : "estado-inactivo"}">
+                        ${estaActivo ? "Activo" : "Inactivo"}
+                    </span>
+                </td>
+                <td>
+                    <button class="boton-editar" data-accion="editar" data-id="${producto.id}">Editar</button>
+                    <button class="boton-estado" data-accion="estado" data-id="${producto.id}">
+                        ${estaActivo ? "Desactivar" : "Activar"}
+                    </button>
+                    <button class="boton-eliminar" data-accion="eliminar" data-id="${producto.id}">Eliminar</button>
+                </td>
+            </tr>
+        `;
+    });
 
-        tabla.innerHTML = contenido;
-    }
-
+    tabla.innerHTML = contenido;
     actualizarEstadisticas();
 };
 
@@ -96,24 +109,8 @@ const formatearPrecio = precio => {
     });
 };
 
-// ESCAPAR TEXTOS
-const escaparHTML = texto => {
-    return String(texto).replace(/[&<>"']/g, caracter => {
-        const caracteres = {
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#39;"
-        };
-
-        return caracteres[caracter];
-    });
-};
-
 // CREAR O MODIFICAR UN PRODUCTO
 const guardarProducto = async event => {
-    event.preventDefault();
 
     const id = document.querySelector("#id-producto").value;
     const mensaje = document.querySelector("#mensaje-formulario");
@@ -149,7 +146,11 @@ const guardarProducto = async event => {
         return;
     }
 
+    const botonGuardar = document.querySelector("#btn-guardar");
+
     try {
+        botonGuardar.disabled = true;
+
         const respuesta = await fetch(URL_API, {
             method: id !== "" ? "PUT" : "POST",
             headers: {
@@ -165,14 +166,13 @@ const guardarProducto = async event => {
         }
 
         mensaje.textContent = datos.message || "Producto guardado correctamente.";
-        mensaje.style.color = "#16803c";
 
         limpiarFormulario();
         await obtenerProductos();
     } catch (error) {
         console.log("Error al guardar:", error);
         mensaje.textContent = error.message;
-        mensaje.style.color = "#c0392b";
+        botonGuardar.disabled = false;
     }
 };
 
@@ -266,14 +266,18 @@ const limpiarFormulario = () => {
     document.querySelector("#titulo-formulario").textContent = "Agregar producto";
     document.querySelector("#btn-guardar").textContent = "Guardar producto";
 
-    document.querySelector("#vista-imagen").removeAttribute("src");
-    document.querySelector("#vista-imagen").hidden = true;
-    document.querySelector("#mensaje-formulario").textContent = "";
+    const imagen = document.querySelector("#vista-imagen");
+    imagen.removeAttribute("src");
+    imagen.hidden = true;
+
+    const mensaje = document.querySelector("#mensaje-formulario");
+    mensaje.textContent = "";
+    mensaje.classList.remove("mensaje-ok", "mensaje-error");
 };
 
 // VISTA PREVIA DE IMAGEN
 const actualizarVistaPrevia = () => {
-    const ruta = document.querySelector("#imagen").value.trim();
+    const ruta = document.querySelector("#imagen").value.trim().replace(/^\/+/, "");
     const imagen = document.querySelector("#vista-imagen");
 
     imagen.onerror = () => {
@@ -283,7 +287,7 @@ const actualizarVistaPrevia = () => {
 
     if (ruta !== "") {
         imagen.hidden = false;
-        imagen.src = ruta;
+        imagen.src = "/" + ruta;
     } else {
         imagen.removeAttribute("src");
         imagen.hidden = true;
@@ -293,12 +297,19 @@ const actualizarVistaPrevia = () => {
 // EVENTOS
 document.querySelector("#form-producto").addEventListener("submit", guardarProducto);
 document.querySelector("#btn-cancelar").addEventListener("click", limpiarFormulario);
-document.querySelector("#btn-actualizar").addEventListener("click", obtenerProductos);
+document.querySelector("#imagen").addEventListener("input", actualizarVistaPrevia);
+
+const btnActualizar = document.querySelector("#btn-actualizar");
+if (btnActualizar) {
+    btnActualizar.addEventListener("click", event => {
+        event.preventDefault();
+        obtenerProductos();
+    });
+}
 
 document.querySelector("#buscar-producto").addEventListener("input", mostrarProductos);
 document.querySelector("#filtro-categoria").addEventListener("change", mostrarProductos);
 document.querySelector("#filtro-estado").addEventListener("change", mostrarProductos);
-document.querySelector("#imagen").addEventListener("input", actualizarVistaPrevia);
 
 document.querySelector("#tabla-productos").addEventListener("click", event => {
     const boton = event.target.closest("button[data-accion]");
@@ -312,6 +323,14 @@ document.querySelector("#tabla-productos").addEventListener("click", event => {
     if (accion === "eliminar") eliminarProducto(id);
     if (accion === "estado") cambiarEstadoProducto(id);
 });
+
+// Evita que Enter en el buscador recargue la página
+const formFiltros = document.querySelector("#form-filtros");
+if (formFiltros) {
+    formFiltros.addEventListener("submit", event => {
+        event.preventDefault();
+    });
+}
 
 // CARGAR PRODUCTOS AL ABRIR EL PANEL
 obtenerProductos();

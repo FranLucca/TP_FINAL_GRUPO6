@@ -3,8 +3,10 @@
 
 import productoRoutes from "./producto.routes.js"
 import ventaRoutes from "./venta.routes.js"
+import viewRoutes from "./view.routes.js"
 
 export {
     productoRoutes,
-    ventaRoutes
+    ventaRoutes,
+    viewRoutes
 }

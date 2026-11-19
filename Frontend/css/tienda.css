@@ -34,7 +34,7 @@
 }
 
 .boton-principal:hover {
-    background-color: #168bc2;
+    background-color: #35a9dc;
 }
 
 /* PRESENTACIÓN */
@@ -84,7 +84,7 @@
 
 .tarjeta-producto:hover {
     transform: translateY(-3px);
-    box-shadow: 0 3px 12px rgba(69, 178, 255, 0.97);
+    box-shadow: 0 3px 12px rgba(53, 169, 220, 1);
 }
 
 .imagen-producto {
@@ -125,7 +125,7 @@
 }
 
 .boton-agregar:hover {
-    background-color: #168bc2;
+    background-color: #35a9dc;
 }
 
 .mensaje-carga {
@@ -133,7 +133,7 @@
     padding: 15px 0;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE SEGUN EL TAMAÑO DE LA VENTANA*/
 @media (max-width: 1000px) {
     .productos-grid {
         grid-template-columns: repeat(2, 1fr);

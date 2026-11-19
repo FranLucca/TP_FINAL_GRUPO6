@@ -30,7 +30,7 @@
     background-color: #ffffff;
     padding: 22px;
     border-radius: 10px;
-    border-left: 4px solid #35b5e5;
+    border-left: 4px solid #35a9dc;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -84,6 +84,13 @@
     border: 1px solid #d3dce8;
     border-radius: 5px;
     font-size: 13px;
+}
+
+/* Ocultar botones de incremento y decremento del input number */
+.grupo-formulario input[type="number"]::-webkit-inner-spin-button,
+.grupo-formulario input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .vista-previa {
@@ -219,6 +226,10 @@
 .estado-inactivo {
     color: #d93636;
     font-weight: bold;
+}
+
+.fila-oculta {
+    display: none !important;
 }
 
 /* RESPONSIVE */
