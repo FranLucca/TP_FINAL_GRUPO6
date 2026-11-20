@@ -1,0 +1,127 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f3f5;
+    min-height: 100vh;
+}
+
+.contenedor-login {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.tarjeta-login {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.marca-login {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.marca-login h1 {
+    font-size: 32px;
+    color: #17202a;
+}
+
+.marca-login h1 span {
+    color: #4f61ef;
+}
+
+.marca-login p {
+    color: #777;
+    margin-top: 8px;
+}
+
+.tarjeta-login h2 {
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.texto-login {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.grupo-login {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.grupo-login label {
+    font-weight: bold;
+    color: #333;
+}
+
+.grupo-login input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.grupo-login input:focus {
+    outline: none;
+    border-color: #4f61ef;
+}
+
+.boton-ingresar,
+.boton-rapido {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.boton-ingresar {
+    background: #4f61ef;
+    color: #fff;
+    margin-top: 8px;
+}
+
+.boton-ingresar:hover {
+    background: #218fc2;
+;
+}
+
+.boton-rapido {
+    background: #e9ecef;
+    color: #333;
+    margin-top: 14px;
+}
+
+.boton-rapido:hover {
+    background: #dce0e4;
+}
+
+.mensaje-error {
+    color: #d62828;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 480px) {
+    .tarjeta-login {
+        padding: 28px 22px;
+    }
+}

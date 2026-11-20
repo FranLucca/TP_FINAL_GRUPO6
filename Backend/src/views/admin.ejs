@@ -1,5 +1,5 @@
+<%- include("./partials/header.ejs", { mostrarCerrarSesion: true }) %>
 <%- include("./partials/head.ejs") %>
-<%- include("./partials/header.ejs") %>
 
     <main class="contenedor-admin">
         <h2>Panel de administración</h2>
@@ -19,7 +19,6 @@
                 <p id="productos-inactivos"><%= stats.inactivos %></p>
             </div>
         </section>
-
         <section class="seccion-admin seccion-formulario">
             <h2 id="titulo-formulario">Agregar producto</h2>
 
