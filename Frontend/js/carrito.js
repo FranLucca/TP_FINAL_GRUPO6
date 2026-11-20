@@ -1,5 +1,5 @@
 
-let carrito = JSON.parse(localStorage.getItem("carrito-productos")) || [];
+let carrito = JSON.parse(sessionStorage.getItem("carrito-productos")) || [];
 
 // MOSTRAR LOS PRODUCTOS DEL CARRITO
 function mostrarCarrito() {
@@ -73,9 +73,9 @@ function cambiarCantidad(indice, decision) {
     }
 }
 
-// GUARDAR CARRITO EN LOCALSTORAGE
+// GUARDAR CARRITO EN SESSIONSTORAGE
 function sincronizarStorage() {
-    localStorage.setItem("carrito-productos", JSON.stringify(carrito));
+    sessionStorage.setItem("carrito-productos", JSON.stringify(carrito));
 }
 
 // ACTUALIZAR CONTADOR DEL ENCABEZADO
@@ -89,6 +89,52 @@ function actualizarContador() {
 
         contador.textContent = cantidadTotal;
     }
+}
+
+// IMPRIMIR TICKET
+boton_imprimir.addEventListener("click", imprimirTciket);
+
+function imprimirTciket() {
+
+    const idProductos = [];
+
+    const { jsPDF } = window.jspdf;
+
+    // Creamos una nueva instancia del document pdf usando la clase jspdf
+    const doc = new jsPDF();
+
+    let y = 10;
+
+    doc.setFontSize(20)
+
+    doc.text("Llama-ticket de compra:", 20, y);
+
+    y += 20;
+
+    doc.setFontSize(14);
+
+    carrito.forEach(producto => {
+
+        idProductos.push(producto.id)
+
+        doc.text(`${producto.nombre} - ${producto.precio}`, 20, y);
+
+        y += 10;
+    });
+
+    // Calculamos el valor total del ticket usando reduce
+    const precioTotal = carrito.reduce((acumulador, producto) => acumulador + parseInt(producto.precio), 0);
+
+    y += 10;
+
+    doc.text(`TOTAL: ${precioTotal}`, 20, y);
+
+    const fecha = new Date();
+    const nombreTicket = `${nombreUsuario} ${fecha.toISOString()}`;
+
+    //Imprimimos Ticket
+    doc.save(`${nombreTicket}.pdf`);
+
 }
 
 // INICIAR CARRITO

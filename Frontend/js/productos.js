@@ -3,7 +3,7 @@
 const URL_API = "http://localhost:3000/api/productos";
 
 // Recuperamos el carrito guardado
-let carrito = JSON.parse(localStorage.getItem("carrito-productos")) || [];
+let carrito = JSON.parse(sessionStorage.getItem("carrito-productos")) || [];
 
 // Array de productos obtenidos desde la API
 let productos = [];
@@ -103,7 +103,7 @@ function agregarAlCarrito(id) {
 
 // FUNCIÓN PARA GUARDAR EL CARRITO
 function sincronizarStorage() {
-    localStorage.setItem("carrito-productos", JSON.stringify(carrito));
+    sessionStorage.setItem("carrito-productos", JSON.stringify(carrito));
 }
 
 // FUNCIÓN PARA ACTUALIZAR EL CONTADOR
