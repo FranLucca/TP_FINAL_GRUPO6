@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +7,48 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bienvenida.css">
 </head>
 <body>
     
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header class="encabezado">
+        <div class="marca">
+            <a href="bienvenida.html">
+                <img src="img/logo.png" alt="Logo FutbolTotal">
+            </a>
+
+            <div>
+                <h1>Futbol<span>Total</span></h1>
+                <small>Luca Kosinski | Martino Monsalvo | Franco Lucca</small>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenedor-bienvenida">
+        <section class="tarjeta-bienvenida">
+            <div class="marca-bienvenida">
+                <p class="titulo-marca">Futbol<span>Total</span></p>
+            </div>
+            
+            <h2>Bienvenido</h2>
+
+            <form id="form-bienvenida">
+                <div class="grupo-bienvenida">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                </div>
+                <button type="submit" class="boton-bienvenida">Ingresar</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>© 2026 FutbolTotal - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/bienvenida.js" defer></script>
 </body>
 </html>

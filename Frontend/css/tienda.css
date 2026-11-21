@@ -23,20 +23,6 @@
     margin-bottom: 25px;
 }
 
-.boton-principal {
-    display: inline-block;
-    background-color: #35a9dc;
-    color: #ffffff;
-    padding: 13px 25px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.boton-principal:hover {
-    background-color: #35a9dc;
-}
-
 /* PRESENTACIÓN */
 .presentacion {
     text-align: center;

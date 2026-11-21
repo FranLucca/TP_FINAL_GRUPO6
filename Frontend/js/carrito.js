@@ -128,8 +128,9 @@ function imprimirTicket() {
     doc.text(`TOTAL: ${precioTotal}`, 20, y);
 
     const fecha = new Date();
-    //const nombreTicket = `${nombreUsuario} ${fecha.toISOString()}`;
-    const nombreTicket = `pedro ${fecha.toISOString()}`;
+    const nombreUsuario = sessionStorage.getItem("nombre-usuario");
+
+    const nombreTicket = `${nombreUsuario}_${fecha.toISOString()}`;
 
     //Imprimimos Ticket
     doc.save(`${nombreTicket}.pdf`);
