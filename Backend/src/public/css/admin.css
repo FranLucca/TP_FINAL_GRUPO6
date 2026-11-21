@@ -1,3 +1,29 @@
+.encabezado-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Boton cerrar sesion */
+#logout-form {
+    justify-self: end;
+}
+
+#logout-form button {
+    background-color: #31a9df;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logout-form button:hover {
+    background-color: #218fc2;
+}
 
 /* PANEL DE ADMINISTRACIÓN */
 .contenedor-admin {
@@ -254,30 +280,4 @@
         align-items: flex-start;
         flex-direction: column;
     }
-}
-/* Boton cerrar sesion */
-#logout-form {
-    margin-left: auto;
-}
-
-#logout-form input[type="submit"] {
-    background-color: #31a9df;
-    color: #ffffff;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#logout-form input[type="submit"]:hover {
-    background-color: #218fc2;
-}
-
-.encabezado {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }

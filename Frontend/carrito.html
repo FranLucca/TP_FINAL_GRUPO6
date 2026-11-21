@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutbolTotal | Carrito</title>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
 
     <!-- Estilos -->
     <link rel="stylesheet" href="css/style.css">
@@ -29,10 +29,6 @@
             <a href="productos.html">Camisetas</a>
             <a href="productos.html">Botines</a>
         </nav>
-
-        <a href="carrito.html" class="boton-carrito">
-            Carrito (<span id="cantidad-carrito">0</span>)
-        </a>
     </header>
 
     <main>
@@ -56,12 +52,11 @@
                     Seguir comprando
                 </a>
 
-                <button type="button" class="boton-final" onclick="procesarCompraFinal()">
+                <button type="button" class="boton-final" onclick="imprimirTicket()">
                     Finalizar compra
                 </button>
             </div>
         </section>
-
     </main>
 
     <!-- PIE DE PÁGINA -->

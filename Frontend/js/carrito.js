@@ -1,4 +1,3 @@
-
 let carrito = JSON.parse(sessionStorage.getItem("carrito-productos")) || [];
 
 // MOSTRAR LOS PRODUCTOS DEL CARRITO
@@ -92,9 +91,8 @@ function actualizarContador() {
 }
 
 // IMPRIMIR TICKET
-boton_imprimir.addEventListener("click", imprimirTciket);
 
-function imprimirTciket() {
+function imprimirTicket() {
 
     const idProductos = [];
 
@@ -107,7 +105,7 @@ function imprimirTciket() {
 
     doc.setFontSize(20)
 
-    doc.text("Llama-ticket de compra:", 20, y);
+    doc.text("FutbolTotal-ticket de compra:", 20, y);
 
     y += 20;
 
@@ -130,7 +128,8 @@ function imprimirTciket() {
     doc.text(`TOTAL: ${precioTotal}`, 20, y);
 
     const fecha = new Date();
-    const nombreTicket = `${nombreUsuario} ${fecha.toISOString()}`;
+    //const nombreTicket = `${nombreUsuario} ${fecha.toISOString()}`;
+    const nombreTicket = `pedro ${fecha.toISOString()}`;
 
     //Imprimimos Ticket
     doc.save(`${nombreTicket}.pdf`);

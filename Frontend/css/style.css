@@ -1,4 +1,3 @@
-
 /* ESTILOS GENERALES */
 * {
     margin: 0;
@@ -32,6 +31,26 @@ a {
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     padding: 5px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.encabezado nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.encabezado nav a {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.encabezado nav a:hover {
+    color: #35a9dc;
 }
 
 .marca {
@@ -60,23 +79,6 @@ a {
     color: #cbd5e1;
     font-size: 12px;
     margin-top: 2px;
-}
-
-.encabezado nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-}
-
-.encabezado nav a {
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.encabezado nav a:hover {
-    color: #35a9dc;
 }
 
 .boton-carrito {
