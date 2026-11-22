@@ -1,15 +1,22 @@
+/* HEADER ADMIN */
 .encabezado-admin {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Boton cerrar sesion */
-#logout-form {
-    justify-self: end;
+/* BOTONES DEL HEADER (ADMIN) */
+.botones-admin {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-#logout-form button {
+.botones-admin form {
+    margin: 0;
+}
+
+.botones-admin button {
     background-color: #31a9df;
     color: #ffffff;
     border: none;
@@ -21,7 +28,7 @@
     transition: background-color 0.3s;
 }
 
-#logout-form button:hover {
+.botones-admin button:hover {
     background-color: #218fc2;
 }
 
@@ -259,6 +266,13 @@
 }
 
 /* RESPONSIVE */
+@media (max-width: 850px) {
+    .botones-admin {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
 @media (max-width: 800px) {
     .estadisticas {
         grid-template-columns: 1fr;

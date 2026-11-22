@@ -1,4 +1,3 @@
-
 let carrito = JSON.parse(sessionStorage.getItem("carrito-productos")) || [];
 const urlBase = "http://localhost:3000";
 
@@ -121,7 +120,7 @@ async function imprimirTicket() {
         const subtotal = Number(producto.precio) * Number(producto.cantidad);
 
         doc.text(
-            `${producto.nombre} - ${formatearPrecio(producto.precio)} x ${producto.cantidad} = ${formatearPrecio(subtotal)}`,
+            `${producto.cantidad} | ${producto.nombre} - ${formatearPrecio(producto.precio)} = ${formatearPrecio(subtotal)}`,
             20,
             y
         );
@@ -155,15 +154,15 @@ async function imprimirTicket() {
 
     const nombreUsuario = sessionStorage.getItem("nombre-usuario");
 
-    const nombreTicket = `${nombreUsuario}_${fechaFormato}`;
-
     // Registramos la venta
-    await registrarVenta(precioTotal, productosVenta, nombreUsuario, fechaFormato, doc, nombreTicket);
+    await registrarVenta(precioTotal, productosVenta, nombreUsuario, fechaFormato, doc);
 }
 
 // REGISTRAR VENTA
-async function registrarVenta(precioTotal, productos, nombreUsuario, fecha, doc, nombreTicket) {
+async function registrarVenta(precioTotal, productos, nombreUsuario, fecha, doc) {
     try {
+        
+        const nombreTicket = `${nombreUsuario}_${fecha}`;
 
         // Definimos que le vamos a mandar al endpoint
         const data = {
@@ -185,12 +184,12 @@ async function registrarVenta(precioTotal, productos, nombreUsuario, fecha, doc,
 
         // Filtramos el resultado de la respuesta del servidor
         if (response.ok) {
-            console.log("Venta registrada: ", result.message);
+            console.log(result.message);
 
             // Descargamos el ticket cuando la venta se registra correctamente
             doc.save(`${nombreTicket}.pdf`);
 
-            alert("Venta registrada: " + result.message);
+            alert(result.message);
 
             sessionStorage.removeItem("carrito-productos");
 

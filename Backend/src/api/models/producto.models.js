@@ -1,4 +1,3 @@
-
 import connection from "../database/db.js";
 
 // Obtener todos los productos, activos e inactivos

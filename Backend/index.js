@@ -56,7 +56,7 @@ app.use("/api/productos", productoRoutes);
 app.use("/api/ventas", ventaRoutes);
 
 //Rutas de exportacion
-app.use("/export", exportacionRoutes); //Agregar el endpoint a un boton
+app.use("/export", exportacionRoutes);
 
 // Rutas de autenticacion
 app.use("/", authRoutes);

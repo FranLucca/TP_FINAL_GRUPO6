@@ -1,4 +1,3 @@
-
 import connection from "../database/db.js";
 
 // Insertamos nueva venta
