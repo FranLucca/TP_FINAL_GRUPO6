@@ -1,4 +1,5 @@
 let carrito = JSON.parse(sessionStorage.getItem("carrito-productos")) || [];
+const urlBase = "http://localhost:3000"
 
 // MOSTRAR LOS PRODUCTOS DEL CARRITO
 function mostrarCarrito() {
@@ -128,37 +129,38 @@ function imprimirTicket() {
     doc.text(`TOTAL: ${precioTotal}`, 20, y);
 
     const fecha = new Date();
+
+    const fechaArgentinaISO = new Intl.DateTimeFormat("sv-SE", {
+        timeZone: "America/Argentina/Buenos_Aires",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hourCycle: "h23"
+    }).format(fecha);
+
+    const fechaFormato = fechaArgentinaISO.slice(0, 19);
+
     const nombreUsuario = sessionStorage.getItem("nombre-usuario");
 
-    const nombreTicket = `${nombreUsuario}_${fecha.toISOString()}`;
+    const nombreTicket = `${nombreUsuario}_${fechaFormato}`;
 
     //Imprimimos Ticket
     doc.save(`${nombreTicket}.pdf`);
 
-    registrarVenta(precioTotal, idProductos)
+    registrarVenta(precioTotal, idProductos, nombreUsuario, fechaFormato)
 
 }
 
-async function registrarVenta(precioTotal, idProductos) {
+async function registrarVenta(precioTotal, idProductos, nombreUsuario, fecha) {
     try {
-        const fecha = new Date();
-
-        const fechaArgentinaISO = new Intl.DateTimeFormat("sv-SE", {
-            timeZone: "America/Argentina/Buenos_Aires",
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hourCycle: "h23"
-        }).format(fecha);
-
-        const fechaFormato = fechaArgentinaISO.slice(0, 19);
+        
 
         //Definimos que le vamos a mandar al endpoint
         const data = {
-            fecha: fechaFormato,
+            fecha: fecha,
             total: precioTotal,
             nombre_cliente: nombreUsuario,
             productos: idProductos //array idProductos
@@ -177,18 +179,18 @@ async function registrarVenta(precioTotal, idProductos) {
         //filtramos el resultado de la respuesta del servidor
         if(response.ok) {
             console.log("Venta registrada: ", result.message);
-            alert("Venta registrada: ", result.message);
+            alert("Venta registrada: " + result.message);
         
             sessionStorage.removeItem("carrito-productos");
 
             window.location.href = "productos.html";
         } else {
             console.error(result);
-            alert("Error en la venta: ", result.message);
+            alert("Error en la venta: " + result.message);
         }
 
     } catch (error) {
-        console.error("Error al enviar los datos: ", error);
+        console.error("Error al enviar los datos: " + error);
         alert("Error al procesar la solicitud");
     }
 }
