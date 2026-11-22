@@ -1,5 +1,6 @@
+
 let carrito = JSON.parse(sessionStorage.getItem("carrito-productos")) || [];
-const urlBase = "http://localhost:3000"
+const urlBase = "http://localhost:3000";
 
 // MOSTRAR LOS PRODUCTOS DEL CARRITO
 function mostrarCarrito() {
@@ -92,41 +93,50 @@ function actualizarContador() {
 }
 
 // IMPRIMIR TICKET
-
-function imprimirTicket() {
-
-    const idProductos = [];
+async function imprimirTicket() {
 
     const { jsPDF } = window.jspdf;
 
-    // Creamos una nueva instancia del document pdf usando la clase jspdf
+    // Creamos una nueva instancia del documento PDF
     const doc = new jsPDF();
 
     let y = 10;
 
-    doc.setFontSize(20)
-
+    doc.setFontSize(20);
     doc.text("FutbolTotal-ticket de compra:", 20, y);
 
     y += 20;
 
     doc.setFontSize(14);
 
+    // Calculamos el total y preparamos los productos de la venta
+    const productosVenta = carrito.map(producto => ({
+        producto_id: producto.id,
+        cantidad: Number(producto.cantidad),
+        precio_unitario: Number(producto.precio)
+    }));
+
     carrito.forEach(producto => {
 
-        idProductos.push(producto.id)
+        const subtotal = Number(producto.precio) * Number(producto.cantidad);
 
-        doc.text(`${producto.nombre} - ${producto.precio}`, 20, y);
+        doc.text(
+            `${producto.nombre} - ${formatearPrecio(producto.precio)} x ${producto.cantidad} = ${formatearPrecio(subtotal)}`,
+            20,
+            y
+        );
 
         y += 10;
     });
 
-    // Calculamos el valor total del ticket usando reduce
-    const precioTotal = carrito.reduce((acumulador, producto) => acumulador + parseInt(producto.precio), 0);
+    // Calculamos el valor total del ticket
+    const precioTotal = carrito.reduce((acumulador, producto) => {
+        return acumulador + (Number(producto.precio) * Number(producto.cantidad));
+    }, 0);
 
     y += 10;
 
-    doc.text(`TOTAL: ${precioTotal}`, 20, y);
+    doc.text(`TOTAL: ${formatearPrecio(precioTotal)}`, 20, y);
 
     const fecha = new Date();
 
@@ -147,23 +157,20 @@ function imprimirTicket() {
 
     const nombreTicket = `${nombreUsuario}_${fechaFormato}`;
 
-    //Imprimimos Ticket
-    doc.save(`${nombreTicket}.pdf`);
-
-    registrarVenta(precioTotal, idProductos, nombreUsuario, fechaFormato)
-
+    // Registramos la venta
+    await registrarVenta(precioTotal, productosVenta, nombreUsuario, fechaFormato, doc, nombreTicket);
 }
 
-async function registrarVenta(precioTotal, idProductos, nombreUsuario, fecha) {
+// REGISTRAR VENTA
+async function registrarVenta(precioTotal, productos, nombreUsuario, fecha, doc, nombreTicket) {
     try {
-        
 
-        //Definimos que le vamos a mandar al endpoint
+        // Definimos que le vamos a mandar al endpoint
         const data = {
             fecha: fecha,
             total: precioTotal,
             nombre_cliente: nombreUsuario,
-            productos: idProductos //array idProductos
+            productos: productos
         }
 
         const response = await fetch(`${urlBase}/api/ventas`, {
@@ -175,15 +182,20 @@ async function registrarVenta(precioTotal, idProductos, nombreUsuario, fecha) {
         });
 
         const result = await response.json();
-        
-        //filtramos el resultado de la respuesta del servidor
-        if(response.ok) {
+
+        // Filtramos el resultado de la respuesta del servidor
+        if (response.ok) {
             console.log("Venta registrada: ", result.message);
+
+            // Descargamos el ticket cuando la venta se registra correctamente
+            doc.save(`${nombreTicket}.pdf`);
+
             alert("Venta registrada: " + result.message);
-        
+
             sessionStorage.removeItem("carrito-productos");
 
             window.location.href = "productos.html";
+
         } else {
             console.error(result);
             alert("Error en la venta: " + result.message);

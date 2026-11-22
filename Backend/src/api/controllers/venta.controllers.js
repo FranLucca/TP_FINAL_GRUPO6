@@ -1,3 +1,4 @@
+
 import ventaModels from "../models/venta.models.js";
 
 export const createVenta = async (req, res) => {
@@ -6,8 +7,7 @@ export const createVenta = async (req, res) => {
 
         const { nombre_cliente, fecha, total, productos } = req.body;
 
-        //Validacion de datos
-
+        // Validacion de datos
         if (!nombre_cliente || !fecha || !total || !Array.isArray(productos) ||
             productos.length === 0) {
             return res.status(400).json({
@@ -15,21 +15,25 @@ export const createVenta = async (req, res) => {
             });
         }
 
-        //Insertamos venta en ventas
+        // Insertamos venta en ventas
         const [resultadoVenta] = await ventaModels.insertarNuevaVenta(nombre_cliente, fecha, total);
 
-        //Obtenemos el id de la venta recien creada
+        // Obtenemos el id de la venta recien creada
         const ventaId = resultadoVenta.insertId;
 
-        //Insertamos los productos en la tabla tickets
-        for (const productoId of productos) {
-            await ventaModels.insertarEnTickets(productoId, ventaId)
+        // Insertamos los productos en la tabla tickets
+        for (const producto of productos) {
+            await ventaModels.insertarEnTickets(
+                producto.producto_id,
+                ventaId,
+                producto.cantidad,
+                producto.precio_unitario
+            );
         }
 
         res.status(201).json({
             message: "Venta registrada con exito en tickets"
         });
-
 
     } catch (error) {
         console.log("Error creando venta: ", error);
