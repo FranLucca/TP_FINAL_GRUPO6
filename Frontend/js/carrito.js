@@ -135,6 +135,62 @@ function imprimirTicket() {
     //Imprimimos Ticket
     doc.save(`${nombreTicket}.pdf`);
 
+    registrarVenta(precioTotal, idProductos)
+
+}
+
+async function registrarVenta(precioTotal, idProductos) {
+    try {
+        const fecha = new Date();
+
+        const fechaArgentinaISO = new Intl.DateTimeFormat("sv-SE", {
+            timeZone: "America/Argentina/Buenos_Aires",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hourCycle: "h23"
+        }).format(fecha);
+
+        const fechaFormato = fechaArgentinaISO.slice(0, 19);
+
+        //Definimos que le vamos a mandar al endpoint
+        const data = {
+            fecha: fechaFormato,
+            total: precioTotal,
+            nombre_cliente: nombreUsuario,
+            productos: idProductos //array idProductos
+        }
+
+        const response = await fetch(`${urlBase}/api/ventas`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        
+        //filtramos el resultado de la respuesta del servidor
+        if(response.ok) {
+            console.log("Venta registrada: ", result.message);
+            alert("Venta registrada: ", result.message);
+        
+            sessionStorage.removeItem("carrito-productos");
+
+            window.location.href = "productos.html";
+        } else {
+            console.error(result);
+            alert("Error en la venta: ", result.message);
+        }
+
+    } catch (error) {
+        console.error("Error al enviar los datos: ", error);
+        alert("Error al procesar la solicitud");
+    }
 }
 
 // INICIAR CARRITO

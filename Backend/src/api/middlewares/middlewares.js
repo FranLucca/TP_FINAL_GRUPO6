@@ -52,48 +52,6 @@ const validateProduct = (req, res, next) => {
     next();
 }
 
-// Middleware para validar los datos de una venta
-const validateVenta = (req, res, next) => {
-    const { nombre_cliente, productos } = req.body;
-    const errores = [];
-
-    if (typeof nombre_cliente !== "string" || nombre_cliente.trim().length < 2) {
-        errores.push("El nombre del cliente debe tener al menos 2 caracteres");
-    }
-
-    if (!Array.isArray(productos) || productos.length === 0) {
-        errores.push("Debe enviar al menos un producto");
-    } else {
-        const idsVistos = new Set();
-
-        productos.forEach((p, indice) => {
-            if (!Number.isInteger(p.producto_id) || p.producto_id <= 0) {
-                errores.push(`El producto en la posicion ${indice} tiene un id invalido`);
-            }
-
-            if (!Number.isInteger(p.cantidad) || p.cantidad <= 0) {
-                errores.push(`El producto en la posicion ${indice} tiene una cantidad invalida`);
-            }
-
-            if (idsVistos.has(p.producto_id)) {
-                errores.push(`El producto ${p.producto_id} esta repetido`);
-            }
-
-            idsVistos.add(p.producto_id);
-        });
-    }
-
-    if (errores.length > 0) {
-        console.log(errores);
-        return res.status(400).json({
-            message: "Datos invalidos",
-            listaErrores: errores
-        });
-    }
-
-    next();
-}
-
 // Middleware para proteger el panel de administrador
 const requireLogin = (req, res, next) => {
     if (!req.session.user) {
@@ -107,6 +65,5 @@ export {
     loggerurl,
     validateId,
     validateProduct,
-    validateVenta,
     requireLogin
 }

@@ -3,8 +3,9 @@ import environments from "./src/api/config/environments.js";
 import cors from "cors";
 import session from "express-session";
 import { loggerurl } from "./src/api/middlewares/middlewares.js";
-import { productoRoutes, ventaRoutes, viewRoutes, authRoutes } from "./src/api/routes/index.js";
+import { productoRoutes, ventaRoutes, viewRoutes, authRoutes, exportacionRoutes } from "./src/api/routes/index.js";
 import { __dirname, join, rutaImagenes, rutaCss } from "./src/api/utils/index.js";
+
 
 const app = express();
 
@@ -47,10 +48,15 @@ app.get("/", (req, res) => {
     res.send("Hola desde el servidor");
 });
 
-// RUTAS API
+// RUTAS
+//Rutas productos
 app.use("/api/productos", productoRoutes);
 
+//Rutas ventas
 app.use("/api/ventas", ventaRoutes);
+
+//Rutas de exportacion
+app.use("/export", exportacionRoutes); //Agregar el endpoint a un boton
 
 // Rutas de autenticacion
 app.use("/", authRoutes);
