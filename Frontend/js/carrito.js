@@ -186,7 +186,6 @@ async function imprimirTicket() {
 // REGISTRAR VENTA
 async function registrarVenta(precioTotal, productos, nombreUsuario, fecha, doc) {
     try {
-
         const nombreTicket = `${nombreUsuario}_${fecha}`;
 
         // Definimos que le vamos a mandar al endpoint
@@ -218,8 +217,10 @@ async function registrarVenta(precioTotal, productos, nombreUsuario, fecha, doc)
 
             sessionStorage.removeItem("carrito-productos");
 
-            window.location.href = "productos.html";
+            window.location.href = "bienvenida.html";
 
+            // Destruimos el nombre del usuario de la sesión
+            sessionStorage.removeItem("nombre-usuario");
         } else {
             console.error(result);
             alert("Error en la venta: " + result.message);

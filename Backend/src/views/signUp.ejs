@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutbolTotal | <%= title %></title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/signUp.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <div class="marca">
+            <a href="/signup">
+                <img src="/img/logo.png" alt="Logo FutbolTotal">
+            </a>
+
+            <div>
+                <h1>Futbol<span>Total</span></h1>
+                <small>Luca Kosinski | Martino Monsalvo | Franco Lucca</small>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenedor-signUp">
+        <section class="tarjeta-signUp">
+            <div class="marca-login">
+                <h1>Futbol<span>Total</span></h1>
+                <p>Registrar usuario</p>
+            </div>
+
+            <h2>Registrarse</h2>
+
+            <form action="/signup" method="POST">
+                <div class="grupo-signUp">
+                    <label for="nombre">Nombre</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ingresá tu nombre"
+                        required
+                    >
+                </div>
+
+                <div class="grupo-signUp">
+                    <label for="email">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Ingresá tu correo"
+                        required
+                    >
+                </div>
+
+                <div class="grupo-signUp">
+                    <label for="password">Contraseña</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Ingresá tu contraseña"
+                        minlength="8"
+                        required
+                    >
+                </div>
+
+                <% if (typeof error !== "undefined" && error) { %>
+                    <p class="mensaje-error"><%= error %></p>
+                <% } %>
+
+                <button type="submit" class="boton-registrarse">
+                    Registrarse
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <%- include("./partials/footer.ejs") %>
+
+</body>
+</html>

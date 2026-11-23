@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
+<body>
 
     <header class="encabezado">
         <div class="marca">
@@ -22,6 +23,7 @@
             </div>
         </div>
     </header>
+    
     <main class="contenedor-login">
         <section class="tarjeta-login">
             <div class="marca-login">
@@ -69,12 +71,12 @@
         </section>
     </main>
 
-<%- include("./partials/footer.ejs") %>
-
-    <script src="js/login.js"></script> // ????
+    <%- include("./partials/footer.ejs") %>
     <script>
         document.getElementById("btn-autocompletar").addEventListener("click", () => {
-        document.getElementById("email").value = "admin@gmail.com";
-        document.getElementById("password").value = "admin123";
-    });
+            document.getElementById("email").value = "admin@gmail.com";
+            document.getElementById("password").value = "admin123";
+        });
     </script>
+</body>
+</html>

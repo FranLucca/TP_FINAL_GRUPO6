@@ -145,6 +145,11 @@ body.tema-oscuro .mensaje-carga {
     color: #cbd5e1;
 }
 
+#camisetas,
+#botines {
+    scroll-margin-top: 100px;
+}
+
 /* RESPONSIVE SEGUN EL TAMAÑO DE LA VENTANA*/
 @media (max-width: 1000px) {
     .productos-grid {

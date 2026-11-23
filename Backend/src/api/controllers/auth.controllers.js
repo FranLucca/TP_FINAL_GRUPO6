@@ -96,3 +96,52 @@ export const logoutUserAdmin = (req, res) => {
         res.redirect("/login");
     });
 }
+
+export const vistaSignUp = (req, res) => {
+    res.render("signUp", {
+        title: "SignUp Admin",
+        about: "Introduzca sus credenciales"
+    })
+}
+
+export const signUpUserAdmin = async (req, res) => {
+    try {
+
+        const { nombre, email, password } = req.body;
+
+        if (!nombre || !email || !password) {
+            return res.render("signUp", {
+                title: "SignUp Admin",
+                about: "Introduzca sus credenciales",
+                error: "Todos los campos son obligatorios"
+            });
+        }
+
+        // Traemos solamente el usuario administrador que tenga ese email
+        const [rows] = await UsuarioModel.selectAdminUser(email);
+        console.log(rows);
+
+        // Si existe el usuario admin
+        if (rows.length > 0) {
+            return res.render("signUp", {
+                title: "SignUp Admin",
+                about: "Email ya registrado",
+                error: "Usuario ya existente con este email"
+            });
+        }
+
+        //Hasheamos la contraseña
+        const passwordHasheada = await bcrypt.hash(password, 10);
+
+        await UsuarioModel.createAdminUser(nombre, email, passwordHasheada);
+
+        res.redirect("/admin");
+
+    } catch (error) {
+        console.log("Error en el registro: ", error);
+
+        res.status(500).json({
+            message: "Error interno del servidor al hacer el registro"
+        });
+    }
+}

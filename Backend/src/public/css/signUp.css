@@ -1,0 +1,101 @@
+.contenedor-signUp {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #f1f3f5;
+}
+
+.tarjeta-signUp {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.marca-login {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.marca-login h1 {
+    font-size: 32px;
+    color: #17202a;
+}
+
+.marca-login h1 span {
+    color: #4f61ef;
+}
+
+.marca-login p {
+    color: #777;
+    margin-top: 8px;
+}
+
+.tarjeta-signUp h2 {
+    margin-bottom: 25px;
+    color: #222;
+}
+
+.grupo-signUp {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.grupo-signUp label {
+    font-weight: bold;
+    color: #333;
+}
+
+.grupo-signUp input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.grupo-signUp input:focus {
+    outline: none;
+    border-color: #4f61ef;
+}
+
+.boton-registrarse {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    background: #4f61ef;
+    color: #fff;
+    margin-top: 8px;
+    transition: background-color 0.3s;
+}
+
+.boton-registrarse:hover {
+    background: #3f4fd1;
+}
+
+.mensaje-error {
+    color: #d62828;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+/* Quita la franja blanca entre el contenido y el footer */
+footer {
+    margin-top: 0;
+}
+
+@media (max-width: 480px) {
+    .tarjeta-signUp {
+        padding: 28px 22px;
+    }
+}
