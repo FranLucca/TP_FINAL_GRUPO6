@@ -1,5 +1,20 @@
+
 let carrito = JSON.parse(sessionStorage.getItem("carrito-productos")) || [];
 const urlBase = "http://localhost:3000";
+
+// APLICAR TEMA GUARDADO
+function aplicarTema() {
+    const tema = localStorage.getItem("tema");
+
+    if (tema === "oscuro") {
+        document.body.setAttribute("class", "tema-oscuro");
+    } else {
+        document.body.setAttribute("class", "");
+    }
+}
+
+// APLICAMOS EL TEMA AL INICIAR
+aplicarTema();
 
 // MOSTRAR LOS PRODUCTOS DEL CARRITO
 function mostrarCarrito() {
@@ -171,7 +186,7 @@ async function imprimirTicket() {
 // REGISTRAR VENTA
 async function registrarVenta(precioTotal, productos, nombreUsuario, fecha, doc) {
     try {
-        
+
         const nombreTicket = `${nombreUsuario}_${fecha}`;
 
         // Definimos que le vamos a mandar al endpoint

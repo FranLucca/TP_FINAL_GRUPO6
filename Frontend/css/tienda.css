@@ -119,6 +119,32 @@
     padding: 15px 0;
 }
 
+/* TEMA OSCURO */
+body.tema-oscuro .presentacion p {
+    color: #cbd5e1;
+}
+
+body.tema-oscuro .tarjeta-producto {
+    background-color: #1c2a38;
+    border-color: #34475a;
+}
+
+body.tema-oscuro .info-producto h3 {
+    color: #ffffff;
+}
+
+body.tema-oscuro .precio-producto {
+    color: #35a9dc;
+}
+
+body.tema-oscuro .imagen-producto {
+    background-color: #ffffff;
+}
+
+body.tema-oscuro .mensaje-carga {
+    color: #cbd5e1;
+}
+
 /* RESPONSIVE SEGUN EL TAMAÑO DE LA VENTANA*/
 @media (max-width: 1000px) {
     .productos-grid {

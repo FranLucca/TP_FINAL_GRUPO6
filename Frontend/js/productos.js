@@ -1,3 +1,4 @@
+
 // URL del Backend
 const URL_API = "http://localhost:3000/api/productos";
 
@@ -6,6 +7,41 @@ let carrito = JSON.parse(sessionStorage.getItem("carrito-productos")) || [];
 
 // Array de productos obtenidos desde la API
 let productos = [];
+
+// APLICAR TEMA GUARDADO
+function aplicarTema() {
+    const tema = localStorage.getItem("tema");
+    const botonTema = document.getElementById("boton-tema");
+
+    if (tema === "oscuro") {
+        document.body.setAttribute("class", "tema-oscuro");
+        botonTema.textContent = "Tema claro";
+    } else {
+        document.body.setAttribute("class", "");
+        botonTema.textContent = "Tema oscuro";
+    }
+}
+
+// CAMBIAR TEMA
+function cambiarTema() {
+    const tema = localStorage.getItem("tema");
+
+    if (tema === "oscuro") {
+        localStorage.setItem("tema", "claro");
+    } else {
+        localStorage.setItem("tema", "oscuro");
+    }
+
+    aplicarTema();
+}
+
+// CONFIGURAR BOTON DEL TEMA
+const botonTema = document.getElementById("boton-tema");
+
+botonTema.addEventListener("click", cambiarTema);
+
+// APLICAMOS EL TEMA GUARDADO AL INICIAR
+aplicarTema();
 
 // FUNCIÓN PARA OBTENER LOS PRODUCTOS
 const obtenerProductos = async () => {

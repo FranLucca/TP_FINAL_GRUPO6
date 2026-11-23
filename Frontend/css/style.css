@@ -1,3 +1,4 @@
+
 /* ESTILOS GENERALES */
 * {
     margin: 0;
@@ -81,8 +82,14 @@ a {
     margin-top: 2px;
 }
 
-.boton-carrito {
+.acciones-encabezado {
     justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.boton-carrito {
     background-color: #35a9dc;
     color: #ffffff;
     padding: 8px 13px;
@@ -93,6 +100,22 @@ a {
 
 .boton-carrito:hover {
     background-color: #35a9dc;
+}
+
+/* BOTON TEMA */
+.boton-tema {
+    background-color: #ffffff;
+    color: #101f35;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-tema:hover {
+    background-color: #dce5ef;
 }
 
 /* FOOTER */
@@ -220,6 +243,43 @@ footer {
     opacity: 0.85;
 }
 
+/* TEMA OSCURO */
+body.tema-oscuro {
+    background-color: #101820;
+    color: #ffffff;
+}
+
+body.tema-oscuro .seccion-carrito h1,
+body.tema-oscuro .seccion-carrito h2 {
+    color: #ffffff;
+}
+
+body.tema-oscuro .items-carrito {
+    background-color: #1c2a38;
+    border-color: #34475a;
+    color: #ffffff;
+}
+
+body.tema-oscuro .nombre-item {
+    color: #ffffff;
+}
+
+body.tema-oscuro .carrito-vacio {
+    background-color: #1c2a38;
+    border-color: #34475a;
+    color: #ffffff;
+}
+
+body.tema-oscuro .total-carrito {
+    background-color: #1c2a38;
+    color: #ffffff;
+}
+
+body.tema-oscuro .boton-seguir {
+    background-color: #35a9dc;
+    color: #ffffff;
+}
+
 /* RESPONSIVE */
 @media (max-width: 850px) {
     .encabezado {
@@ -235,7 +295,7 @@ footer {
         gap: 15px;
     }
 
-    .boton-carrito {
+    .acciones-encabezado {
         justify-self: center;
     }
 }
@@ -254,4 +314,9 @@ footer {
     .boton-final {
         text-align: center;
     }
-}   
+
+    .acciones-encabezado {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
