@@ -61,10 +61,20 @@
                 <button type="submit" class="boton-ingresar">
                     Ingresar
                 </button>
+
+                <button type="button" id="btn-autocompletar" class="boton-ingresar">
+                    Autocompletar admin
+                </button>
             </form>
         </section>
     </main>
 
 <%- include("./partials/footer.ejs") %>
 
-    <script src="js/login.js"></script>
+    <script src="js/login.js"></script> // ????
+    <script>
+        document.getElementById("btn-autocompletar").addEventListener("click", () => {
+        document.getElementById("email").value = "admin@gmail.com";
+        document.getElementById("password").value = "admin123";
+    });
+    </script>

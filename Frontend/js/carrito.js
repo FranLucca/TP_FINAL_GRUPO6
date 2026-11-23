@@ -94,68 +94,78 @@ function actualizarContador() {
 // IMPRIMIR TICKET
 async function imprimirTicket() {
 
-    const { jsPDF } = window.jspdf;
+    if (carrito.length === 0) {
+        alert("El carrito está vacío. Agregá productos antes de confirmar la compra.");
+        return;
+    }
 
-    // Creamos una nueva instancia del documento PDF
-    const doc = new jsPDF();
+    const confirmacion = confirm("¿Confirmas la compra de todos los productos?");
 
-    let y = 10;
+    if (confirmacion) {
 
-    doc.setFontSize(20);
-    doc.text("FutbolTotal-ticket de compra:", 20, y);
+        const { jsPDF } = window.jspdf;
 
-    y += 20;
+        // Creamos una nueva instancia del documento PDF
+        const doc = new jsPDF();
 
-    doc.setFontSize(14);
+        let y = 10;
 
-    // Calculamos el total y preparamos los productos de la venta
-    const productosVenta = carrito.map(producto => ({
-        producto_id: producto.id,
-        cantidad: Number(producto.cantidad),
-        precio_unitario: Number(producto.precio)
-    }));
+        doc.setFontSize(20);
+        doc.text("FutbolTotal-ticket de compra:", 20, y);
 
-    carrito.forEach(producto => {
+        y += 20;
 
-        const subtotal = Number(producto.precio) * Number(producto.cantidad);
+        doc.setFontSize(14);
 
-        doc.text(
-            `${producto.cantidad} | ${producto.nombre} - ${formatearPrecio(producto.precio)} = ${formatearPrecio(subtotal)}`,
-            20,
-            y
-        );
+        // Calculamos el total y preparamos los productos de la venta
+        const productosVenta = carrito.map(producto => ({
+            producto_id: producto.id,
+            cantidad: Number(producto.cantidad),
+            precio_unitario: Number(producto.precio)
+        }));
+
+        carrito.forEach(producto => {
+
+            const subtotal = Number(producto.precio) * Number(producto.cantidad);
+
+            doc.text(
+                `${producto.cantidad} | ${producto.nombre} - ${formatearPrecio(producto.precio)} = ${formatearPrecio(subtotal)}`,
+                20,
+                y
+            );
+
+            y += 10;
+        });
+
+        // Calculamos el valor total del ticket
+        const precioTotal = carrito.reduce((acumulador, producto) => {
+            return acumulador + (Number(producto.precio) * Number(producto.cantidad));
+        }, 0);
 
         y += 10;
-    });
 
-    // Calculamos el valor total del ticket
-    const precioTotal = carrito.reduce((acumulador, producto) => {
-        return acumulador + (Number(producto.precio) * Number(producto.cantidad));
-    }, 0);
+        doc.text(`TOTAL: ${formatearPrecio(precioTotal)}`, 20, y);
 
-    y += 10;
+        const fecha = new Date();
 
-    doc.text(`TOTAL: ${formatearPrecio(precioTotal)}`, 20, y);
+        const fechaArgentinaISO = new Intl.DateTimeFormat("sv-SE", {
+            timeZone: "America/Argentina/Buenos_Aires",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hourCycle: "h23"
+        }).format(fecha);
 
-    const fecha = new Date();
+        const fechaFormato = fechaArgentinaISO.slice(0, 19);
 
-    const fechaArgentinaISO = new Intl.DateTimeFormat("sv-SE", {
-        timeZone: "America/Argentina/Buenos_Aires",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hourCycle: "h23"
-    }).format(fecha);
+        const nombreUsuario = sessionStorage.getItem("nombre-usuario");
 
-    const fechaFormato = fechaArgentinaISO.slice(0, 19);
-
-    const nombreUsuario = sessionStorage.getItem("nombre-usuario");
-
-    // Registramos la venta
-    await registrarVenta(precioTotal, productosVenta, nombreUsuario, fechaFormato, doc);
+        // Registramos la venta
+        await registrarVenta(precioTotal, productosVenta, nombreUsuario, fechaFormato, doc);
+    }
 }
 
 // REGISTRAR VENTA
