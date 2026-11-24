@@ -12,7 +12,14 @@ const insertarEnTickets = (productoId, ventaId, cantidad, precioUnitario) => {
     return connection.query(sql, [productoId, ventaId, cantidad, precioUnitario]);
 }
 
+//Obtenemos todas las ventas de tickets
+const selectAllVentas = () => {
+    const sql = "SELECT * FROM tickets";
+    return connection.query(sql)
+}
+
 export default {
     insertarNuevaVenta,
-    insertarEnTickets
+    insertarEnTickets,
+    selectAllVentas
 }

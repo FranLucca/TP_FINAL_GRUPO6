@@ -42,3 +42,30 @@ export const createVenta = async (req, res) => {
         });
     }
 }
+
+export const obtenerVentas = async (req, res) => {
+    //Manejo de errores
+        try {
+            const [filas, tablas] = await ventaModels.selectAllVentas();
+            console.log(filas);
+    
+            //Devolvemos 404 si no hay productos
+            if (filas.length === 0) {
+                return res.status(404).json({
+                    message: "No se encontraron ventas"
+                });
+            }
+    
+            res.status(200).json({
+                payload: filas
+            });
+    
+        } catch (error) {
+            console.log("Error obteniendo ventas: ", error);
+    
+            //Devolvemos error 500 si algo fallo en la conexion
+            res.status(500).json({
+                message: "Error interno del servidor al obtener las ventas"
+            })
+        }
+}
