@@ -1,172 +1,205 @@
 
 /* BANNER PRINCIPAL */
+
+/* CONTENEDOR DEL BANNER DE LA TIENDA */
 .banner {
-    min-height: 400px;
-    background: linear-gradient(rgba(7, 28, 54, 0.55), rgba(7, 28, 54, 0.75)), url("../img/banner.png");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #ffffff;
-    padding: 30px;
+    min-height: 400px; /* Establece una altura mínima de 400 píxeles */
+    background: linear-gradient(rgba(7, 28, 54, 0.55), rgba(7, 28, 54, 0.75)), url("../img/banner.png"); /* Combina una capa oscura semitransparente con la imagen del banner */
+    background-size: cover; /* Hace que la imagen cubra todo el espacio disponible sin deformarse */
+    background-position: center; /* Centra la imagen de fondo */
+    display: flex; /* Activa Flexbox para organizar el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto */
+    color: #ffffff; /* Establece el texto en color blanco */
+    padding: 30px; /* Agrega espacio interno alrededor del contenido */
 }
 
+/* TÍTULO PRINCIPAL DENTRO DEL BANNER */
 .contenido-banner h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
+    font-size: 48px; /* Establece el tamaño de la letra */
+    margin-bottom: 15px; /* Agrega espacio debajo del título */
 }
 
+/* SUBTÍTULO DEL BANNER */
 .subtitulo {
-    font-size: 17px;
-    margin-bottom: 25px;
+    font-size: 17px; /* Establece el tamaño de la letra */
+    margin-bottom: 25px; /* Agrega espacio debajo del subtítulo */
 }
 
 /* PRESENTACIÓN */
+
+/* CONTENEDOR DE LA PRESENTACIÓN DE LA TIENDA */
 .presentacion {
-    text-align: center;
-    padding: 45px 20px 25px;
+    text-align: center; /* Centra horizontalmente el texto */
+    padding: 45px 20px 25px; /* Agrega espacio interno: 45 píxeles arriba, 20 a los costados y 25 abajo */
 }
 
+/* TÍTULO DE LA PRESENTACIÓN */
 .presentacion h2 {
-    font-size: 28px;
-    margin-bottom: 12px;
+    font-size: 28px; /* Establece el tamaño de la letra */
+    margin-bottom: 12px; /* Agrega espacio debajo del título */
 }
 
+/* PÁRRAFO DE LA PRESENTACIÓN */
 .presentacion p {
-    color: #596779;
-    font-size: 16px;
+    color: #596779; /* Establece el color gris azulado del texto */
+    font-size: 16px; /* Establece el tamaño de la letra */
 }
 
 /* SECCIONES DE PRODUCTOS */
+
+/* CONTENEDOR GENERAL DE LAS SECCIONES DE CAMISETAS Y BOTINES */
 .seccion-productos {
-    width: 90%;
-    max-width: 1480px;
-    margin: 35px auto;
+    width: 90%; /* Ocupa el 90% del ancho disponible */
+    max-width: 1480px; /* Establece un ancho máximo de 1480 píxeles */
+    margin: 35px auto; /* Agrega 35 píxeles de margen vertical y centra horizontalmente el contenedor */
 }
 
+/* TÍTULOS DE LAS SECCIONES DE PRODUCTOS */
 .titulo-seccion {
-    font-size: 27px;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid #35a9dc;
+    font-size: 27px; /* Establece el tamaño de la letra */
+    margin-bottom: 25px; /* Agrega espacio debajo del título */
+    padding-bottom: 10px; /* Agrega espacio interno debajo del texto */
+    border-bottom: 3px solid #35a9dc; /* Agrega una línea azul debajo del título */
 }
 
 /* GRILLA DE PRODUCTOS */
+
+/* CONTENEDOR DONDE SE DISTRIBUYEN LAS TARJETAS DE PRODUCTOS */
 .productos-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 17px;
+    display: grid; /* Activa CSS Grid para organizar los productos */
+    grid-template-columns: repeat(4, 1fr); /* Crea cuatro columnas de igual tamaño */
+    gap: 17px; /* Establece una separación de 17 píxeles entre las tarjetas */
 }
 
+/* TARJETA INDIVIDUAL DE CADA PRODUCTO */
 .tarjeta-producto {
-    background-color: #ffffff;
-    border: 1px solid #e0e5ec;
-    border-radius: 7px;
-    overflow: hidden;
-    transition: transform 0.3s;
+    background-color: #ffffff; /* Establece el fondo blanco */
+    border: 1px solid #e0e5ec; /* Agrega un borde gris claro */
+    border-radius: 7px; /* Redondea las esquinas de la tarjeta */
+    overflow: hidden; /* Oculta el contenido que sobresale de los límites de la tarjeta */
+    transition: transform 0.3s; /* Suaviza las transformaciones durante 0.3 segundos */
 }
 
+/* EFECTO DE LA TARJETA CUANDO EL CURSOR PASA POR ENCIMA */
 .tarjeta-producto:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 3px 12px rgba(53, 169, 220, 1);
+    transform: translateY(-3px); /* Desplaza la tarjeta 3 píxeles hacia arriba */
+    box-shadow: 0 3px 12px rgba(53, 169, 220, 1); /* Agrega una sombra azul alrededor de la tarjeta */
 }
 
+/* IMAGEN DE CADA PRODUCTO */
 .imagen-producto {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
-    padding: 10px;
-    background-color: #ffffff;
+    width: 100%; /* Hace que la imagen ocupe todo el ancho de la tarjeta */
+    height: 220px; /* Establece una altura de 220 píxeles */
+    object-fit: contain; /* Mantiene las proporciones de la imagen sin deformarla */
+    padding: 10px; /* Agrega espacio interno alrededor de la imagen */
+    background-color: #ffffff; /* Establece un fondo blanco detrás de la imagen */
 }
 
+/* CONTENEDOR DE LA INFORMACIÓN DEL PRODUCTO */
 .info-producto {
-    padding: 15px 13px 12px;
+    padding: 15px 13px 12px; /* Agrega espacio interno: 15 píxeles arriba, 13 a los costados y 12 abajo */
 }
 
+/* NOMBRE DEL PRODUCTO */
 .info-producto h3 {
-    font-size: 14px;
-    margin-bottom: 20px;
+    font-size: 14px; /* Establece el tamaño de la letra */
+    margin-bottom: 20px; /* Agrega espacio debajo del nombre */
 }
 
+/* PRECIO DEL PRODUCTO */
 .precio-producto {
-    color: #101f35;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 12px;
+    color: #101f35; /* Establece el color azul oscuro */
+    font-size: 16px; /* Establece el tamaño de la letra */
+    font-weight: bold; /* Muestra el precio en negrita */
+    margin-bottom: 12px; /* Agrega espacio debajo del precio */
 }
 
+/* BOTÓN PARA AGREGAR UN PRODUCTO AL CARRITO */
 .boton-agregar {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #101f35;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    width: 100%; /* Hace que el botón ocupe todo el ancho disponible */
+    padding: 10px; /* Agrega espacio interno al botón */
+    border: none; /* Elimina el borde predeterminado */
+    border-radius: 4px; /* Redondea las esquinas */
+    background-color: #101f35; /* Establece el fondo azul oscuro */
+    color: #ffffff; /* Establece el texto blanco */
+    font-size: 12px; /* Establece el tamaño de la letra */
+    font-weight: bold; /* Muestra el texto en negrita */
+    cursor: pointer; /* Cambia el cursor para indicar que se puede hacer clic */
+    transition: background-color 0.3s; /* Suaviza el cambio de color durante 0.3 segundos */
 }
 
+/* CAMBIO DE COLOR DEL BOTÓN AL PASAR EL CURSOR */
 .boton-agregar:hover {
-    background-color: #35a9dc;
+    background-color: #35a9dc; /* Cambia el fondo a azul celeste */
 }
 
+/* MENSAJE QUE SE MUESTRA MIENTRAS SE CARGAN LOS PRODUCTOS */
 .mensaje-carga {
-    color: #596779;
-    padding: 15px 0;
+    color: #596779; /* Establece el color gris azulado */
+    padding: 15px 0; /* Agrega espacio interno arriba y abajo */
 }
 
 /* TEMA OSCURO */
+
+/* PÁRRAFO DE PRESENTACIÓN EN TEMA OSCURO */
 body.tema-oscuro .presentacion p {
-    color: #cbd5e1;
+    color: #cbd5e1; /* Cambia el texto a un gris claro para mejorar la lectura */
 }
 
+/* TARJETAS DE PRODUCTOS EN TEMA OSCURO */
 body.tema-oscuro .tarjeta-producto {
-    background-color: #1c2a38;
-    border-color: #34475a;
+    background-color: #1c2a38; /* Cambia el fondo de las tarjetas a un tono oscuro */
+    border-color: #34475a; /* Cambia el borde a un gris azulado */
 }
 
+/* NOMBRE DEL PRODUCTO EN TEMA OSCURO */
 body.tema-oscuro .info-producto h3 {
-    color: #ffffff;
+    color: #ffffff; /* Establece el nombre del producto en blanco */
 }
 
+/* PRECIO DEL PRODUCTO EN TEMA OSCURO */
 body.tema-oscuro .precio-producto {
-    color: #35a9dc;
+    color: #35a9dc; /* Cambia el precio a azul celeste */
 }
 
+/* IMAGEN DEL PRODUCTO EN TEMA OSCURO */
 body.tema-oscuro .imagen-producto {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Mantiene el fondo blanco detrás de la imagen */
 }
 
+/* MENSAJE DE CARGA EN TEMA OSCURO */
 body.tema-oscuro .mensaje-carga {
-    color: #cbd5e1;
+    color: #cbd5e1; /* Cambia el texto a un gris claro */
 }
 
+/* AJUSTE DEL DESPLAZAMIENTO AL NAVEGAR HACIA LAS SECCIONES */
 #camisetas,
 #botines {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 100px; /* Deja un espacio superior de 100 píxeles al desplazarse hacia estas secciones */
 }
 
-/* RESPONSIVE SEGUN EL TAMAÑO DE LA VENTANA*/
+/* RESPONSIVE SEGÚN EL TAMAÑO DE LA VENTANA */
+
+/* ADAPTACIÓN PARA PANTALLAS DE HASTA 1000 PÍXELES */
 @media (max-width: 1000px) {
     .productos-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Reduce la grilla a dos columnas de igual tamaño */
     }
 }
 
+/* ADAPTACIÓN PARA PANTALLAS DE HASTA 600 PÍXELES */
 @media (max-width: 600px) {
     .productos-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Cambia la grilla a una sola columna */
     }
 
     .banner {
-        min-height: 300px;
+        min-height: 300px; /* Reduce la altura mínima del banner para celulares */
     }
 
     .contenido-banner h1 {
-        font-size: 35px;
+        font-size: 35px; /* Reduce el tamaño del título para pantallas pequeñas */
     }
 }

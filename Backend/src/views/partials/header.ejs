@@ -1,25 +1,40 @@
+<!-- Encabezado principal del panel de administración. -->
 <header class="encabezado encabezado-admin">
+    <!-- Contenedor de la marca y el logo de FutbolTotal. -->
     <div class="marca">
+        <!-- Enlace que permite volver al panel de administración. -->
         <a href="/admin">
+            <!-- Muestra el logo de FutbolTotal. -->
             <img src="img/logo.png" alt="Logo FutbolTotal">
         </a>
 
+        <!-- Contenedor del nombre de la empresa y los integrantes del grupo. -->
         <div>
+            <!-- Muestra el nombre de la empresa, separando Total para aplicarle otro estilo. -->
             <h1>Futbol<span>Total</span></h1>
+
+            <!-- Muestra los nombres de los integrantes del grupo. -->
             <small>Luca Kosinski | Martino Monsalvo | Franco Lucca</small>
         </div>
     </div>
 
+    <!-- Contenedor de los botones de administración. -->
     <div class="Botones-admin">
+        <!-- Formulario que permite solicitar la exportación de productos a Excel. -->
         <form action="/export/productos" id="excel-form" >
+            <!-- Botón que inicia el envío del formulario de exportación. -->
             <button type="submit">Excel productos</button>
         </form>
 
+        <!-- Formulario que permite acceder a la creación de un usuario. -->
         <form action="/signup" method="" id="sign-up-form" >
+            <!-- Botón que permite acceder al formulario de registro. -->
             <button type="submit">Crear Usuario</button>
         </form>
 
+        <!-- Formulario que envía una solicitud POST para cerrar la sesión. -->
         <form action="/logout" method="POST" id="logout-form" >
+            <!-- Botón que permite cerrar la sesión del administrador. -->
             <button type="submit">Cerrar sesión</button>
         </form>
     </div>

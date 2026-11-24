@@ -1,4 +1,5 @@
 /* HEADER ADMIN */
+/* Organiza los elementos del encabezado del administrador en una fila. */
 .encabezado-admin {
     display: flex;
     justify-content: space-between;
@@ -6,16 +7,19 @@
 }
 
 /* BOTONES DEL HEADER (ADMIN) */
+/* Organiza los botones del encabezado utilizando Flexbox. */
 .botones-admin {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
+/* Elimina los márgenes de los formularios que contienen los botones. */
 .botones-admin form {
     margin: 0;
 }
 
+/* Define la apariencia de los botones del encabezado. */
 .botones-admin button {
     background-color: #31a9df;
     color: #ffffff;
@@ -28,22 +32,26 @@
     transition: background-color 0.3s;
 }
 
+/* Cambia el color de fondo cuando el cursor pasa sobre el botón. */
 .botones-admin button:hover {
     background-color: #218fc2;
 }
 
 /* PANEL DE ADMINISTRACIÓN */
+/* Define el ancho, el ancho máximo y los márgenes del panel. */
 .contenedor-admin {
     width: 90%;
     max-width: 1250px;
     margin: 35px auto;
 }
 
+/* Establece el tamaño y el margen inferior del título principal del panel. */
 .contenedor-admin > h2 {
     font-size: 26px;
     margin-bottom: 5px;
 }
 
+/* Define la apariencia del subtítulo del panel. */
 .subtitulo-admin {
     color: #35a9dc;
     font-size: 12px;
@@ -52,6 +60,7 @@
 }
 
 /* ESTADÍSTICAS */
+/* Organiza las tarjetas estadísticas en una cuadrícula de tres columnas. */
 .estadisticas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -59,6 +68,7 @@
     margin-bottom: 25px;
 }
 
+/* Define el diseño visual de cada tarjeta de estadísticas. */
 .tarjeta-estadistica {
     background-color: #ffffff;
     padding: 22px;
@@ -67,11 +77,13 @@
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* Establece el tamaño y el margen del título de cada tarjeta. */
 .tarjeta-estadistica h3 {
     font-size: 16px;
     margin-bottom: 10px;
 }
 
+/* Define el tamaño, color y grosor del texto de las estadísticas. */
 .tarjeta-estadistica p {
     font-size: 23px;
     color: #35a9dc;
@@ -79,6 +91,7 @@
 }
 
 /* SECCIONES */
+/* Define el diseño general de las secciones del panel. */
 .seccion-admin {
     background-color: #ffffff;
     padding: 22px;
@@ -87,29 +100,34 @@
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* Establece el tamaño y el margen inferior de los títulos de las secciones. */
 .seccion-admin h2 {
     font-size: 20px;
     margin-bottom: 18px;
 }
 
 /* FORMULARIO */
+/* Organiza los campos del formulario en una cuadrícula de dos columnas. */
 #form-producto {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
 }
 
+/* Organiza verticalmente los elementos de cada grupo del formulario. */
 .grupo-formulario {
     display: flex;
     flex-direction: column;
     gap: 7px;
 }
 
+/* Define la apariencia de las etiquetas del formulario. */
 .grupo-formulario label {
     font-weight: bold;
     font-size: 13px;
 }
 
+/* Aplica estilos a los campos de texto y listas desplegables del formulario. */
 .grupo-formulario input,
 .grupo-formulario select {
     width: 100%;
@@ -120,16 +138,19 @@
 }
 
 /* Ocultar botones de incremento y decremento del input number */
+/* Elimina la apariencia predeterminada de los controles numéricos en navegadores WebKit. */
 .grupo-formulario input[type="number"]::-webkit-inner-spin-button,
 .grupo-formulario input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
+/* Hace que la vista previa ocupe todas las columnas disponibles del formulario. */
 .vista-previa {
     grid-column: 1 / -1;
 }
 
+/* Define las dimensiones y la apariencia de la imagen de vista previa. */
 #vista-imagen {
     width: 110px;
     height: 110px;
@@ -139,12 +160,14 @@
     padding: 5px;
 }
 
+/* Organiza horizontalmente los botones del formulario. */
 .botones-formulario {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
+/* Define la apariencia de los botones del formulario y del botón actualizar. */
 .botones-formulario button,
 #btn-actualizar {
     padding: 10px 16px;
@@ -156,16 +179,19 @@
     cursor: pointer;
 }
 
+/* Cambia el color de fondo del botón cancelar. */
 #btn-cancelar {
     background-color: #6c7785;
 }
 
+/* Hace que el mensaje del formulario ocupe todas las columnas disponibles. */
 #mensaje-formulario {
     grid-column: 1 / -1;
     font-size: 13px;
 }
 
 /* LISTADO */
+/* Organiza horizontalmente el encabezado del listado. */
 .encabezado-listado {
     display: flex;
     justify-content: space-between;
@@ -173,11 +199,13 @@
     gap: 15px;
 }
 
+/* Agrega un margen inferior al botón actualizar. */
 #btn-actualizar {
     margin-bottom: 18px;
 }
 
 /* FILTROS */
+/* Organiza los filtros en tres columnas con diferentes proporciones. */
 .filtros {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
@@ -185,6 +213,7 @@
     margin-bottom: 20px;
 }
 
+/* Define la apariencia de los campos de texto y listas desplegables de los filtros. */
 .filtros input,
 .filtros select {
     width: 100%;
@@ -196,17 +225,20 @@
 }
 
 /* TABLA */
+/* Permite que la tabla tenga desplazamiento horizontal cuando sea necesario. */
 .tabla-contenedor {
     width: 100%;
     overflow-x: auto;
 }
 
+/* Define el ancho, el comportamiento de los bordes y la alineación de la tabla. */
 .tabla-contenedor table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
 }
 
+/* Define la apariencia de los encabezados de la tabla. */
 .tabla-contenedor th {
     background-color: #071c36;
     color: #ffffff;
@@ -214,18 +246,21 @@
     font-size: 12px;
 }
 
+/* Define la apariencia de las celdas de la tabla. */
 .tabla-contenedor td {
     padding: 12px 10px;
     border-bottom: 1px solid #e0e5ec;
     font-size: 13px;
 }
 
+/* Establece las dimensiones y el ajuste de las imágenes de la tabla. */
 .imagen-tabla {
     width: 55px;
     height: 55px;
     object-fit: contain;
 }
 
+/* Define la apariencia general de los botones que se encuentran dentro de la tabla. */
 .tabla-contenedor button {
     padding: 7px 9px;
     margin: 2px;
@@ -236,36 +271,43 @@
     font-weight: bold;
 }
 
+/* Define el color del botón editar. */
 .boton-editar {
     background-color: #35a9dc;
     color: #ffffff;
 }
 
+/* Define el color del botón cambiar estado. */
 .boton-estado {
     background-color: #e6a23c;
     color: #ffffff;
 }
 
+/* Define el color del botón eliminar. */
 .boton-eliminar {
     background-color: #d93636;
     color: #ffffff;
 }
 
+/* Define el color y grosor del texto para los productos activos. */
 .estado-activo {
     color: #16803c;
     font-weight: bold;
 }
 
+/* Define el color y grosor del texto para los productos inactivos. */
 .estado-inactivo {
     color: #d93636;
     font-weight: bold;
 }
 
+/* Oculta las filas que tengan esta clase. */
 .fila-oculta {
     display: none !important;
 }
 
 /* RESPONSIVE */
+/* Aplica estos estilos cuando el ancho de pantalla es de 850 píxeles o menos. */
 @media (max-width: 850px) {
     .botones-admin {
         flex-wrap: wrap;
@@ -273,23 +315,29 @@
     }
 }
 
+/* Aplica estos estilos cuando el ancho de pantalla es de 800 píxeles o menos. */
 @media (max-width: 800px) {
+    /* Organiza las tarjetas estadísticas en una sola columna. */
     .estadisticas {
         grid-template-columns: 1fr;
     }
 
+    /* Organiza los campos del formulario en una sola columna. */
     #form-producto {
         grid-template-columns: 1fr;
     }
 
+    /* Organiza los filtros en una sola columna. */
     .filtros {
         grid-template-columns: 1fr;
     }
 
+    /* Aumenta el ancho disponible del panel en pantallas pequeñas. */
     .contenedor-admin {
         width: 95%;
     }
 
+    /* Organiza verticalmente el encabezado del listado. */
     .encabezado-listado {
         align-items: flex-start;
         flex-direction: column;

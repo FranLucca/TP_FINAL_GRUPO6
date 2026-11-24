@@ -1,54 +1,83 @@
 <!DOCTYPE html>
+<!-- Indica que el documento utiliza HTML5 -->
 <html lang="es">
+<!-- Define que el idioma principal del documento es español -->
 <head>
+    <!-- Contiene información y configuraciones generales de la página -->
     <meta charset="UTF-8">
+    <!-- Permite utilizar caracteres especiales y acentos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configura la visualización para que la página se adapte al ancho del dispositivo -->
     <title>FutbolTotal | Bienvenida</title>
+    <!-- Define el título que aparece en la pestaña del navegador -->
 
-    <!-- Estilos -->
+    <!-- ESTILOS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Vincula la hoja de estilos general del sitio -->
     <link rel="stylesheet" href="css/bienvenida.css">
+    <!-- Vincula los estilos específicos de la pantalla de bienvenida -->
 </head>
 <body>
     
     <!-- ENCABEZADO PRINCIPAL -->
     <header class="encabezado">
+        <!-- Contiene el encabezado principal de la página -->
         <div class="marca">
+            <!-- Agrupa el logo y el nombre de la empresa -->
             <a href="bienvenida.html">
+                <!-- Permite volver a la pantalla de bienvenida al hacer clic en el logo -->
                 <img src="img/logo.png" alt="Logo FutbolTotal">
+                <!-- Muestra el logo de FutbolTotal y define un texto alternativo -->
             </a>
 
             <div>
+                <!-- Contiene el nombre de la marca y los integrantes del grupo -->
                 <h1>Futbol<span>Total</span></h1>
+                <!-- Muestra el nombre de la empresa y utiliza span para separar una parte del texto -->
                 <small>Luca Kosinski | Martino Monsalvo | Franco Lucca</small>
+                <!-- Muestra los nombres de los integrantes en un texto de menor importancia -->
             </div>
         </div>
     </header>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="contenedor-bienvenida">
+        <!-- Contiene el contenido principal de la pantalla de bienvenida -->
         <section class="tarjeta-bienvenida">
+            <!-- Agrupa los elementos que forman la tarjeta de bienvenida -->
             <div class="marca-bienvenida">
+                <!-- Contiene el nombre de la marca dentro de la tarjeta -->
                 <p class="titulo-marca">Futbol<span>Total</span></p>
+                <!-- Muestra el nombre de FutbolTotal con una parte del texto diferenciada -->
             </div>
             
             <h2>Bienvenido</h2>
+            <!-- Muestra el título de bienvenida al cliente -->
 
             <form id="form-bienvenida">
+                <!-- Define el formulario que permite ingresar el nombre del cliente -->
                 <div class="grupo-bienvenida">
+                    <!-- Agrupa la etiqueta y el campo de ingreso del nombre -->
                     <label for="nombre">Nombre</label>
+                    <!-- Identifica el campo de texto mediante su atributo for -->
                     <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                    <!-- Permite ingresar el nombre del cliente; required indica que el campo es obligatorio -->
                 </div>
                 <button type="submit" class="boton-bienvenida">Ingresar</button>
+                <!-- Botón que envía el formulario y permite continuar con el proceso de bienvenida -->
             </form>
         </section>
     </main>
 
     <!-- PIE DE PÁGINA -->
     <footer>
+        <!-- Define el pie de página del sitio -->
         <p>© 2026 FutbolTotal - Todos los derechos reservados.</p>
+        <!-- Muestra el aviso de derechos reservados -->
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JAVASCRIPT -->
     <script src="js/bienvenida.js" defer></script>
+    <!-- Vincula el archivo JavaScript que controla el formulario de bienvenida. defer hace que se ejecute después de analizar el HTML -->
 </body>
 </html>

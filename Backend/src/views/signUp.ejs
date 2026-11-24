@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Define la codificación de caracteres del documento. -->
     <meta charset="UTF-8">
+
+    <!-- Configura la visualización para adaptar la página al ancho del dispositivo. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Define el título de la página utilizando una variable recibida desde el backend. -->
     <title>FutbolTotal | <%= title %></title>
 
     <!-- Estilos -->
+    <!-- Vincula la hoja de estilos general de la aplicación. -->
     <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Vincula los estilos específicos de la pantalla de registro. -->
     <link rel="stylesheet" href="/css/signUp.css">
 </head>
 <body>
 
+    <!-- Encabezado principal de la página. -->
     <header class="encabezado">
+        <!-- Contenedor que agrupa el logo y el nombre del proyecto. -->
         <div class="marca">
+            <!-- Enlace que dirige a la ruta de registro. -->
             <a href="/signup">
+                <!-- Muestra el logo de FutbolTotal. -->
                 <img src="/img/logo.png" alt="Logo FutbolTotal">
             </a>
 
+            <!-- Contenedor con el nombre del proyecto y los integrantes. -->
             <div>
                 <h1>Futbol<span>Total</span></h1>
                 <small>Luca Kosinski | Martino Monsalvo | Franco Lucca</small>
@@ -24,18 +37,25 @@
         </div>
     </header>
 
+    <!-- Contenedor principal de la pantalla de registro. -->
     <main class="contenedor-signUp">
+        <!-- Tarjeta que contiene los elementos del formulario. -->
         <section class="tarjeta-signUp">
+            <!-- Presentación del nombre del proyecto y la sección actual. -->
             <div class="marca-login">
                 <h1>Futbol<span>Total</span></h1>
                 <p>Registrar usuario</p>
             </div>
 
+            <!-- Título del formulario de registro. -->
             <h2>Registrarse</h2>
 
+            <!-- Formulario que envía los datos de registro al servidor mediante POST. -->
             <form action="/signup" method="POST">
+                <!-- Grupo de campos correspondiente al nombre del usuario. -->
                 <div class="grupo-signUp">
                     <label for="nombre">Nombre</label>
+                    <!-- Campo para ingresar el nombre. Es obligatorio. -->
                     <input
                         type="text"
                         id="nombre"
@@ -45,8 +65,10 @@
                     >
                 </div>
 
+                <!-- Grupo de campos correspondiente al correo electrónico. -->
                 <div class="grupo-signUp">
                     <label for="email">Correo electrónico</label>
+                    <!-- Campo para ingresar una dirección de correo electrónico. -->
                     <input
                         type="email"
                         id="email"
@@ -56,8 +78,10 @@
                     >
                 </div>
 
+                <!-- Grupo de campos correspondiente a la contraseña. -->
                 <div class="grupo-signUp">
                     <label for="password">Contraseña</label>
+                    <!-- Campo que oculta los caracteres ingresados y exige un mínimo de ocho caracteres. -->
                     <input
                         type="password"
                         id="password"
@@ -68,10 +92,14 @@
                     >
                 </div>
 
+                <!-- Comprueba que exista la variable error y que tenga un valor verdadero. -->
                 <% if (typeof error !== "undefined" && error) { %>
+                    <!-- Si existe un error, muestra su contenido en la página. -->
                     <p class="mensaje-error"><%= error %></p>
+                <!-- Finaliza la condición de EJS. -->
                 <% } %>
 
+                <!-- Botón que envía el formulario para registrar al usuario. -->
                 <button type="submit" class="boton-registrarse">
                     Registrarse
                 </button>
@@ -79,6 +107,7 @@
         </section>
     </main>
 
+    <!-- Incluye el pie de página reutilizable de la aplicación. -->
     <%- include("./partials/footer.ejs") %>
 
 </body>

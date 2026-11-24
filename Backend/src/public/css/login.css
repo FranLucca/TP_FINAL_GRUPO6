@@ -1,15 +1,18 @@
+/* Selector universal: aplica estos estilos a todos los elementos de la página. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Define los estilos generales del cuerpo de la página. */
 body {
     font-family: Arial, sans-serif;
     background: #f1f3f5;
     min-height: 100vh;
 }
 
+/* Contenedor principal del login. */
 .contenedor-login {
     min-height: 100vh;
     display: flex;
@@ -18,6 +21,7 @@ body {
     padding: 20px;
 }
 
+/* Tarjeta que contiene el formulario de inicio de sesión. */
 .tarjeta-login {
     width: 100%;
     max-width: 420px;
@@ -27,35 +31,42 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Contenedor de la marca y el título principal. */
 .marca-login {
     text-align: center;
     margin-bottom: 30px;
 }
 
+/* Define el tamaño y color del título principal. */
 .marca-login h1 {
     font-size: 32px;
     color: #17202a;
 }
 
+/* Cambia el color del texto que se encuentra dentro del span del título. */
 .marca-login h1 span {
     color: #4f61ef;
 }
 
+/* Define el color y margen superior del texto descriptivo de la marca. */
 .marca-login p {
     color: #777;
     margin-top: 8px;
 }
 
+/* Define los estilos del título secundario de la tarjeta. */
 .tarjeta-login h2 {
     margin-bottom: 8px;
     color: #222;
 }
 
+/* Define la apariencia del texto descriptivo del formulario. */
 .texto-login {
     color: #777;
     margin-bottom: 25px;
 }
 
+/* Organiza verticalmente cada grupo de campos del formulario. */
 .grupo-login {
     display: flex;
     flex-direction: column;
@@ -63,11 +74,13 @@ body {
     margin-bottom: 18px;
 }
 
+/* Define la apariencia de las etiquetas de los campos. */
 .grupo-login label {
     font-weight: bold;
     color: #333;
 }
 
+/* Define la apariencia de los campos de entrada. */
 .grupo-login input {
     width: 100%;
     padding: 12px;
@@ -76,11 +89,13 @@ body {
     font-size: 15px;
 }
 
+/* Aplica estilos cuando el usuario selecciona un campo de entrada. */
 .grupo-login input:focus {
     outline: none;
     border-color: #4f61ef;
 }
 
+/* Define los estilos generales compartidos por los dos botones. */
 .boton-ingresar,
 .boton-rapido {
     width: 100%;
@@ -92,34 +107,41 @@ body {
     font-weight: bold;
 }
 
+/* Define los estilos específicos del botón para iniciar sesión. */
 .boton-ingresar {
     background: #4f61ef;
     color: #fff;
     margin-top: 8px;
 }
 
+/* Cambia el color de fondo cuando el cursor pasa sobre el botón ingresar. */
 .boton-ingresar:hover {
     background: #218fc2;
 ;
 }
 
+/* Define los estilos específicos del botón de acceso rápido. */
 .boton-rapido {
     background: #e9ecef;
     color: #333;
     margin-top: 14px;
 }
 
+/* Cambia el color de fondo cuando el cursor pasa sobre el botón de acceso rápido. */
 .boton-rapido:hover {
     background: #dce0e4;
 }
 
+/* Define la apariencia de los mensajes de error del login. */
 .mensaje-error {
     color: #d62828;
     font-size: 14px;
     margin-bottom: 12px;
 }
 
+/* Aplica estos estilos cuando el ancho de pantalla es de 480 píxeles o menos. */
 @media (max-width: 480px) {
+    /* Reduce el espacio interior de la tarjeta en pantallas pequeñas. */
     .tarjeta-login {
         padding: 28px 22px;
     }

@@ -1,66 +1,94 @@
-
 <!DOCTYPE html>
+<!-- Indica que el documento utiliza HTML5 -->
 <html lang="es">
+<!-- Define que el idioma principal del documento es español -->
 <head>
+    <!-- Contiene la información y configuración general de la página -->
     <meta charset="UTF-8">
+    <!-- Permite utilizar correctamente caracteres especiales y acentos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Adapta la visualización de la página al ancho del dispositivo -->
     <title>FutbolTotal | Carrito</title>
+    <!-- Define el título que aparece en la pestaña del navegador -->
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <!-- Importa la biblioteca jsPDF para generar y descargar el ticket de compra en formato PDF -->
 
-    <!-- Estilos -->
+    <!-- ESTILOS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Vincula la hoja de estilos general que define la apariencia de la página -->
 </head>
 <body>
 
     <!-- ENCABEZADO PRINCIPAL -->
     <header class="encabezado">
+        <!-- Define el encabezado principal del sitio -->
         <div class="marca">
+            <!-- Agrupa el logo y el nombre de FutbolTotal -->
             <a href="carrito.html">
+                <!-- Permite acceder nuevamente a la página del carrito al hacer clic en el logo -->
                 <img src="img/logo.png" alt="Logo FutbolTotal">
+                <!-- Muestra el logo de la empresa y proporciona un texto alternativo -->
             </a>
 
             <div>
+                <!-- Contiene el nombre de la empresa y los integrantes del grupo -->
                 <h1>Futbol<span>Total</span></h1>
+                <!-- Muestra el nombre de la marca y utiliza span para diferenciar una parte del texto -->
                 <small>Luca Kosinski | Martino Monsalvo | Franco Lucca</small>
+                <!-- Muestra los nombres de los integrantes del grupo -->
             </div>
         </div>
     </header>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
+        <!-- Contiene el contenido principal de la página -->
 
         <!-- CARRITO DE COMPRAS -->
         <section class="seccion-carrito">
+            <!-- Agrupa todos los elementos relacionados con el carrito de compras -->
             <h1>Mi carrito</h1>
+            <!-- Muestra el título de la sección -->
 
             <ul id="contenedor-carrito"></ul>
+            <!-- Lista donde JavaScript inserta dinámicamente los productos seleccionados por el cliente -->
 
             <!-- TOTAL -->
             <div class="total-carrito">
+                <!-- Contiene el importe total de la compra -->
                 <h2>
                     Total: <span id="total-carrito-txt">$0</span>
+                    <!-- Muestra el precio total, que JavaScript actualiza según los productos del carrito -->
                 </h2>
             </div>
 
             <!-- BOTONES -->
             <div class="acciones-compra">
+                <!-- Agrupa las acciones disponibles para el cliente -->
+
                 <a href="productos.html" class="boton-seguir">
                     Seguir comprando
                 </a>
+                <!-- Enlace que permite volver a la página de productos -->
 
                 <button type="button" class="boton-final" onclick="imprimirTicket()">
                     Finalizar compra
                 </button>
+                <!-- Ejecuta la función imprimirTicket() de carrito.js cuando el cliente hace clic -->
             </div>
         </section>
     </main>
 
     <!-- PIE DE PÁGINA -->
     <footer>
+        <!-- Define el pie de página del sitio -->
         <p>© 2026 FutbolTotal - Todos los derechos reservados.</p>
+        <!-- Muestra el aviso de derechos reservados -->
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JAVASCRIPT -->
     <script src="js/carrito.js"></script>
+    <!-- Vincula el archivo JavaScript que controla el carrito, modifica las cantidades y registra las compras -->
 
 </body>
 </html>

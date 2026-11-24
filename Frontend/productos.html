@@ -1,83 +1,125 @@
 
 <!DOCTYPE html>
+<!-- Indica que el documento utiliza HTML5 -->
 <html lang="es">
+<!-- Define que el idioma principal del documento es español -->
 <head>
+    <!-- Contiene la información y configuración general de la página -->
     <meta charset="UTF-8">
+    <!-- Permite utilizar correctamente caracteres especiales y acentos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Adapta la visualización de la página al ancho del dispositivo -->
     <title>FutbolTotal | Tienda</title>
+    <!-- Define el título que aparece en la pestaña del navegador -->
 
-    <!-- Estilos -->
+    <!-- ESTILOS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Vincula la hoja de estilos general del sitio -->
     <link rel="stylesheet" href="css/tienda.css">
+    <!-- Vincula la hoja de estilos específica de la tienda -->
 </head>
 <body>
 
     <!-- ENCABEZADO PRINCIPAL -->
     <header class="encabezado">
+        <!-- Define el encabezado principal de la página -->
         <div class="marca">
+            <!-- Agrupa el logo y el nombre de la empresa -->
             <a href="productos.html">
+                <!-- Permite volver a la página principal de la tienda al hacer clic en el logo -->
                 <img src="img/logo.png" alt="Logo FutbolTotal">
+                <!-- Muestra el logo de FutbolTotal y proporciona un texto alternativo -->
             </a>
 
             <div>
+                <!-- Contiene el nombre de la marca y los integrantes del grupo -->
                 <h1>Futbol<span>Total</span></h1>
+                <!-- Muestra el nombre de la empresa y utiliza span para diferenciar una parte del texto -->
                 <small>Luca Kosinski | Martino Monsalvo | Franco Lucca</small>
+                <!-- Muestra los nombres de los integrantes del grupo -->
             </div>
         </div>
 
+        <!-- MENÚ DE NAVEGACIÓN -->
         <nav>
+            <!-- Agrupa los enlaces que permiten navegar por las distintas secciones -->
             <a href="productos.html">Inicio</a>
+            <!-- Enlace que lleva a la página principal de la tienda -->
             <a href="#camisetas">Camisetas</a>
+            <!-- Enlace que desplaza la página hasta la sección de camisetas -->
             <a href="#botines">Botines</a>
+            <!-- Enlace que desplaza la página hasta la sección de botines -->
             <a href="http://localhost:3000/admin">Panel admin</a>
+            <!-- Enlace que dirige al panel de administración del backend -->
         </nav>
 
+        <!-- ACCIONES DEL ENCABEZADO -->
         <div class="acciones-encabezado">
+            <!-- Agrupa el botón para cambiar el tema y el acceso al carrito -->
             <button type="button" id="boton-tema" class="boton-tema">
                 Tema oscuro
             </button>
+            <!-- Botón que permite alternar entre el tema claro y el oscuro mediante JavaScript -->
 
             <a href="carrito.html" class="boton-carrito">
                 Carrito (<span id="cantidad-carrito">0</span>)
+                <!-- Enlace al carrito que muestra la cantidad total de productos seleccionados -->
             </a>
         </div>
     </header>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
+        <!-- Contiene las secciones principales de la tienda -->
 
         <!-- BANNER PRINCIPAL -->
         <section class="banner">
+            <!-- Define la sección del banner principal de la tienda -->
             <div class="contenido-banner">
+                <!-- Agrupa el título y el texto que aparecen dentro del banner -->
                 <h1>FutbolTotal</h1>
+                <!-- Muestra el nombre de la tienda -->
                 <p class="subtitulo">
                     Encontrá todo lo que necesitás para vivir el fútbol.
                 </p>
+                <!-- Presenta una frase descriptiva de la tienda -->
             </div>
         </section>
 
         <!-- PRESENTACIÓN -->
         <section class="presentacion" id="productos">
+            <!-- Contiene la presentación de la tienda y utiliza un ID para identificar la sección -->
             <h2>Bienvenido a FutbolTotal</h2>
+            <!-- Muestra el título de presentación -->
             <p>
                 Encontrá camisetas y botines de tus equipos y marcas favoritas.
             </p>
+            <!-- Describe los productos que ofrece la tienda -->
         </section>
 
         <!-- SECCIÓN CAMISETAS -->
         <section class="seccion-productos" id="camisetas">
+            <!-- Define la sección donde se muestran los productos de categoría camiseta -->
             <h2 class="titulo-seccion">Camisetas</h2>
+            <!-- Muestra el título de la categoría -->
 
             <div class="productos-grid" id="contenedor-camisetas">
+                <!-- Contenedor donde JavaScript inserta las tarjetas de camisetas obtenidas desde el backend -->
                 <p class="mensaje-carga">Cargando camisetas...</p>
+                <!-- Mensaje que se muestra inicialmente mientras se cargan los productos -->
             </div>
         </section>
 
         <!-- SECCIÓN BOTINES -->
         <section class="seccion-productos" id="botines">
+            <!-- Define la sección donde se muestran los productos de categoría botín -->
             <h2 class="titulo-seccion">Botines</h2>
+            <!-- Muestra el título de la categoría -->
 
             <div class="productos-grid" id="contenedor-botines">
+                <!-- Contenedor donde JavaScript inserta las tarjetas de botines obtenidas desde el backend -->
                 <p class="mensaje-carga">Cargando botines...</p>
+                <!-- Mensaje que se muestra inicialmente mientras se cargan los productos -->
             </div>
         </section>
 
@@ -85,11 +127,14 @@
 
     <!-- PIE DE PÁGINA -->
     <footer>
+        <!-- Define el pie de página del sitio -->
         <p>© 2026 FutbolTotal - Todos los derechos reservados.</p>
+        <!-- Muestra el aviso de derechos reservados -->
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JAVASCRIPT -->
     <script src="js/productos.js"></script>
+    <!-- Vincula el archivo JavaScript que obtiene los productos del backend, los muestra y administra el carrito y el tema -->
 
 </body>
 </html>

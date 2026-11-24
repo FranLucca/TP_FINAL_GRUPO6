@@ -1,42 +1,69 @@
+<!-- Incluye el archivo head.ejs, que contiene la configuración general del documento y los estilos CSS. -->
 <%- include("./partials/head.ejs") %>
+
+<!-- Incluye el encabezado del panel de administración. -->
 <%- include("./partials/header.ejs")%>
 
+    <!-- Contenedor principal del panel de administración. -->
     <main class="contenedor-admin">
+        <!-- Título principal del panel. -->
         <h2>Panel de administración</h2>
+
+        <!-- Texto descriptivo de la funcionalidad del panel. -->
         <p class="subtitulo-admin">Administrá los productos de FutbolTotal.</p>
 
+        <!-- Sección que muestra las estadísticas generales de los productos. -->
         <section class="estadisticas">
+            <!-- Tarjeta que muestra la cantidad total de productos. -->
             <div class="tarjeta-estadistica">
                 <h3>Total de productos</h3>
+                <!-- Inserta mediante EJS el total de productos recibido desde el backend. -->
                 <p id="total-productos"><%= stats.total %></p>
             </div>
+
+            <!-- Tarjeta que muestra la cantidad de productos activos. -->
             <div class="tarjeta-estadistica">
                 <h3>Productos activos</h3>
+                <!-- Inserta mediante EJS la cantidad de productos activos. -->
                 <p id="productos-activos"><%= stats.activos %></p>
             </div>
+
+            <!-- Tarjeta que muestra la cantidad de productos inactivos. -->
             <div class="tarjeta-estadistica">
                 <h3>Productos inactivos</h3>
+                <!-- Inserta mediante EJS la cantidad de productos inactivos. -->
                 <p id="productos-inactivos"><%= stats.inactivos %></p>
             </div>
         </section>
+
+        <!-- Sección que contiene el formulario para agregar o modificar productos. -->
         <section class="seccion-admin seccion-formulario">
+            <!-- Título del formulario, cuyo contenido puede cambiar desde JavaScript. -->
             <h2 id="titulo-formulario">Agregar producto</h2>
 
+            <!-- Formulario utilizado para guardar los datos de un producto. -->
             <form id="form-producto">
+                <!-- Campo oculto que almacena el ID del producto cuando se está editando. -->
                 <input type="hidden" id="id-producto">
 
+                <!-- Grupo de campos correspondiente al nombre del producto. -->
                 <div class="grupo-formulario">
                     <label for="nombre">Nombre del producto</label>
+                    <!-- Permite ingresar el nombre del producto. El campo es obligatorio. -->
                     <input type="text" id="nombre" required>
                 </div>
 
+                <!-- Grupo de campos correspondiente a la imagen del producto. -->
                 <div class="grupo-formulario">
                     <label for="imagen">Ruta de la imagen</label>
+                    <!-- Permite ingresar la ruta donde se encuentra guardada la imagen. -->
                     <input type="text" id="imagen" placeholder="img/camiseta-boca.png" required>
                 </div>
 
+                <!-- Grupo de campos correspondiente a la categoría del producto. -->
                 <div class="grupo-formulario">
                     <label for="categoria">Categoría</label>
+                    <!-- Lista desplegable que permite seleccionar la categoría del producto. -->
                     <select id="categoria" required>
                         <option value="">Seleccionar categoría</option>
                         <option value="camiseta">Camiseta</option>
@@ -44,39 +71,54 @@
                     </select>
                 </div>
 
+                <!-- Grupo de campos correspondiente al precio del producto. -->
                 <div class="grupo-formulario">
                     <label for="precio">Precio</label>
+                    <!-- Permite ingresar un precio numérico mayor o igual a 1. -->
                     <input type="number" id="precio" min="1" required>
                 </div>
 
+                <!-- Contenedor donde JavaScript muestra una vista previa de la imagen ingresada. -->
                 <div class="vista-previa">
                     <img id="vista-imagen" alt="Vista previa del producto" hidden>
                 </div>
 
+                <!-- Contenedor de los botones para guardar o cancelar las operaciones del formulario. -->
                 <div class="botones-formulario">
+                    <!-- Botón que envía el formulario para guardar el producto. -->
                     <button type="submit" id="btn-guardar">Guardar producto</button>
+
+                    <!-- Botón que permite cancelar la operación actual. -->
                     <button type="button" id="btn-cancelar">Cancelar</button>
                 </div>
 
+                <!-- Elemento donde JavaScript puede mostrar mensajes relacionados con el formulario. -->
                 <p id="mensaje-formulario"></p>
             </form>
         </section>
 
+        <!-- Sección que contiene el listado de productos registrados. -->
         <section class="seccion-admin">
+            <!-- Encabezado del listado y acceso para actualizarlo. -->
             <div class="encabezado-listado">
                 <h2>Productos registrados</h2>
+                <!-- Enlace que vuelve a la ruta del panel para actualizar el listado. -->
                 <a href="/admin" id="btn-actualizar">Actualizar listado</a>
             </div>
 
+            <!-- Formulario que agrupa los filtros del listado de productos. -->
             <form class="filtros" id="form-filtros">
+                <!-- Campo de texto que permite buscar productos por su nombre. -->
                 <input type="text" id="buscar-producto" placeholder="Buscar producto...">
 
+                <!-- Lista desplegable para filtrar los productos por categoría. -->
                 <select id="filtro-categoria">
                     <option value="todos">Todas las categorías</option>
                     <option value="camiseta">Camisetas</option>
                     <option value="botin">Botines</option>
                 </select>
 
+                <!-- Lista desplegable para filtrar los productos según su estado. -->
                 <select id="filtro-estado">
                     <option value="todos">Todos los estados</option>
                     <option value="1">Activos</option>
@@ -84,8 +126,11 @@
                 </select>
             </form>
 
+            <!-- Contenedor que permite organizar la tabla de productos. -->
             <div class="tabla-contenedor">
+                <!-- Tabla que muestra la información de los productos registrados. -->
                 <table>
+                    <!-- Encabezado de la tabla. -->
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -97,15 +142,21 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                        <tbody id="tabla-productos">
-                        <!-- Fila para que los filtros la puedan mostrar u ocultar -->
+
+                    <!-- Cuerpo de la tabla donde se muestran los productos. -->
+                    <tbody id="tabla-productos">
+                        <!-- Fila para que los filtros la puedan mostrar u ocultar. -->
                         <tr id="fila-sin-resultados" class="fila-oculta">
                             <td colspan="7">No se encontraron productos.</td>
                         </tr>
 
+                        <!-- Recorre mediante JavaScript de EJS el arreglo de productos recibido desde el backend. -->
                         <% productos.forEach(p => { %>
+
+                            <!-- Convierte el estado del producto a número y comprueba si es igual a 1. -->
                             <% const estaActivo = Number(p.activo) === 1; %>
 
+                            <!-- Fila correspondiente a cada producto. Los atributos data almacenan sus datos para utilizarlos desde JavaScript. -->
                             <tr data-id="<%= p.id %>"
                                 data-nombre="<%= p.nombre %>"
                                 data-imagen="<%= p.imagen %>"
@@ -113,40 +164,54 @@
                                 data-precio="<%= p.precio %>"
                                 data-activo="<%= estaActivo ? 1 : 0 %>">
 
+                                <!-- Muestra el identificador del producto. -->
                                 <td><%= p.id %></td>
 
+                                <!-- Celda que contiene la imagen del producto. -->
                                 <td>
                                     <img class="imagen-tabla"
                                         src="<%= p.imagen %>"
                                         alt="<%= p.nombre %>">
                                 </td>
 
+                                <!-- Muestra el nombre del producto. -->
                                 <td><%= p.nombre %></td>
 
+                                <!-- Comprueba la categoría y muestra su nombre correspondiente. -->
                                 <td><%= p.categoria === "camiseta" ? "Camiseta" : "Botín" %></td>
 
+                                <!-- Muestra el precio del producto. -->
                                 <td><%= (p.precio) %></td>
 
+                                <!-- Celda que muestra el estado actual del producto. -->
                                 <td>
+                                    <!-- Asigna una clase CSS diferente según si el producto está activo o inactivo. -->
                                     <span class="<%= estaActivo ? 'estado-activo' : 'estado-inactivo' %>">
+                                        <!-- Muestra el texto correspondiente al estado del producto. -->
                                         <%= estaActivo ? "Activo" : "Inactivo" %>
                                     </span>
                                 </td>
 
+                                <!-- Celda que contiene los botones para realizar acciones sobre el producto. -->
                                 <td>
+                                    <!-- Botón para editar el producto. Los atributos data identifican la acción y el producto. -->
                                     <button class="boton-editar" data-accion="editar" data-id="<%= p.id %>">
                                         Editar
                                     </button>
 
+                                    <!-- Botón para activar o desactivar el producto según su estado actual. -->
                                     <button class="boton-estado" data-accion="estado" data-id="<%= p.id %>">
+                                        <!-- Muestra la acción que corresponde al estado actual del producto. -->
                                         <%= estaActivo ? "Desactivar" : "Activar" %>
                                     </button>
 
+                                    <!-- Botón para eliminar el producto. -->
                                     <button class="boton-eliminar" data-accion="eliminar" data-id="<%= p.id %>">
                                         Eliminar
                                     </button>
                                 </td>
                             </tr>
+                        <!-- Finaliza el recorrido del arreglo de productos. -->
                         <% }) %>
                     </tbody>
                 </table>
@@ -154,5 +219,8 @@
         </section>
     </main>
 
+<!-- Incluye el pie de página de la aplicación. -->
 <%- include("./partials/footer.ejs") %>
-    <script src="/js/admin.js"></script>
+
+<!-- Vincula el archivo JavaScript que controla las funcionalidades del panel de administración. -->
+<script src="/js/admin.js"></script>

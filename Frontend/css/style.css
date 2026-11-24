@@ -1,322 +1,368 @@
-
 /* ESTILOS GENERALES */
+
+/* Selector universal: aplica estas propiedades a todos los elementos de la página */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Elimina los márgenes predeterminados */
+    padding: 0; /* Elimina los espacios internos predeterminados */
+    box-sizing: border-box; /* Incluye el padding y el borde dentro del ancho y alto del elemento */
 }
 
+/* CONFIGURACIÓN GENERAL DEL BODY */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #101f35;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    font-family: Arial, sans-serif; /* Establece la fuente de texto de toda la página */
+    background-color: #ffffff; /* Establece el fondo blanco */
+    color: #101f35; /* Establece el color predeterminado del texto */
+    min-height: 100vh; /* Hace que el body ocupe como mínimo el 100% de la altura de la pantalla */
+    display: flex; /* Activa Flexbox para organizar los elementos */
+    flex-direction: column; /* Coloca los elementos uno debajo del otro */
 }
 
+/* CONTENIDO PRINCIPAL DE LA PÁGINA */
 main {
-    flex: 1;
+    flex: 1; /* Hace que el contenido principal ocupe el espacio disponible */
 }
 
+/* ENLACES */
 a {
-    text-decoration: none;
+    text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces */
 }
 
 /* ENCABEZADO PRINCIPAL */
+
+/* CONTENEDOR DEL ENCABEZADO */
 .encabezado {
-    width: 100%;
-    height: 67px;
-    background-color: #101f35;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    padding: 5px 6%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    height: 67px; /* Establece una altura de 67 píxeles */
+    background-color: #101f35; /* Establece el fondo azul oscuro */
+    display: grid; /* Activa CSS Grid para distribuir los elementos */
+    grid-template-columns: 1fr 1fr 1fr; /* Divide el encabezado en tres columnas de igual tamaño */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 5px 6%; /* Agrega espacio interno: 5 píxeles arriba y abajo y 6% a los costados */
+    position: sticky; /* Mantiene el encabezado visible al desplazarse por la página */
+    top: 0; /* Fija el encabezado en la parte superior */
+    z-index: 1000; /* Establece su prioridad de superposición frente a otros elementos */
 }
 
+/* CONTENEDOR DE LOS ENLACES DE NAVEGACIÓN */
 .encabezado nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
+    display: flex; /* Activa Flexbox para organizar los enlaces */
+    justify-content: center; /* Centra horizontalmente los enlaces */
+    align-items: center; /* Centra verticalmente los enlaces */
+    gap: 25px; /* Establece una separación de 25 píxeles entre los enlaces */
 }
 
+/* ENLACES DEL MENÚ DE NAVEGACIÓN */
 .encabezado nav a {
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: bold;
+    color: #ffffff; /* Establece el color blanco de los enlaces */
+    font-size: 12px; /* Establece el tamaño de la letra */
+    font-weight: bold; /* Muestra el texto en negrita */
 }
 
+/* CAMBIO DE COLOR DE LOS ENLACES AL PASAR EL CURSOR */
 .encabezado nav a:hover {
-    color: #35a9dc;
+    color: #35a9dc; /* Cambia el color del enlace a azul celeste */
 }
 
+/* CONTENEDOR DE LA MARCA Y EL LOGO */
 .marca {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex; /* Activa Flexbox para colocar el logo y el texto en una misma fila */
+    align-items: center; /* Centra verticalmente el logo y el texto */
+    gap: 8px; /* Establece una separación de 8 píxeles entre ambos elementos */
 }
 
+/* IMAGEN DEL LOGO */
 .marca img {
-    width: 35px;
-    height: 35px;
-    object-fit: contain;
+    width: 35px; /* Establece el ancho de la imagen */
+    height: 35px; /* Establece la altura de la imagen */
+    object-fit: contain; /* Mantiene las proporciones originales de la imagen */
 }
 
+/* TÍTULO DE LA MARCA */
 .marca h1 {
-    color: #ffffff;
-    font-size: 21px;
+    color: #ffffff; /* Establece el color blanco del título */
+    font-size: 21px; /* Establece el tamaño de la letra */
 }
 
+/* PARTE DEL TÍTULO QUE ESTÁ DENTRO DEL SPAN */
 .marca h1 span {
-    color: #35a9dc;
+    color: #35a9dc; /* Aplica el color azul celeste a esa parte del nombre */
 }
 
+/* TEXTO SECUNDARIO DEBAJO DEL NOMBRE DE LA MARCA */
 .marca small {
-    display: block;
-    color: #cbd5e1;
-    font-size: 12px;
-    margin-top: 2px;
+    display: block; /* Hace que el texto ocupe su propia línea */
+    color: #cbd5e1; /* Establece un color gris claro */
+    font-size: 12px; /* Establece el tamaño de la letra */
+    margin-top: 2px; /* Agrega una pequeña separación superior */
 }
 
+/* CONTENEDOR DE LAS ACCIONES DEL ENCABEZADO */
 .acciones-encabezado {
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    justify-self: end; /* Alinea el contenedor al final de su columna de Grid */
+    display: flex; /* Activa Flexbox para organizar sus elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    gap: 10px; /* Establece una separación de 10 píxeles entre los elementos */
 }
 
+/* BOTÓN DE ACCESO AL CARRITO */
 .boton-carrito {
-    background-color: #35a9dc;
-    color: #ffffff;
-    padding: 8px 13px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
+    background-color: #35a9dc; /* Establece el fondo azul celeste */
+    color: #ffffff; /* Establece el texto blanco */
+    padding: 8px 13px; /* Agrega espacio interno al botón */
+    border-radius: 5px; /* Redondea las esquinas */
+    font-size: 12px; /* Establece el tamaño de la letra */
+    font-weight: bold; /* Muestra el texto en negrita */
 }
 
+/* ESTILO DEL BOTÓN DEL CARRITO AL PASAR EL CURSOR */
 .boton-carrito:hover {
-    background-color: #35a9dc;
+    background-color: #35a9dc; /* Mantiene el mismo color de fondo al pasar el cursor */
 }
 
-/* BOTON TEMA */
+/* BOTÓN PARA CAMBIAR ENTRE TEMA CLARO Y OSCURO */
 .boton-tema {
-    background-color: #ffffff;
-    color: #101f35;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
+    background-color: #ffffff; /* Establece el fondo blanco */
+    color: #101f35; /* Establece el color del texto azul oscuro */
+    border: none; /* Elimina el borde predeterminado */
+    padding: 8px 12px; /* Agrega espacio interno al botón */
+    border-radius: 5px; /* Redondea las esquinas */
+    font-size: 12px; /* Establece el tamaño de la letra */
+    font-weight: bold; /* Muestra el texto en negrita */
+    cursor: pointer; /* Cambia el cursor para indicar que se puede hacer clic */
 }
 
+/* ESTILO DEL BOTÓN DEL TEMA AL PASAR EL CURSOR */
 .boton-tema:hover {
-    background-color: #dce5ef;
+    background-color: #dce5ef; /* Cambia el fondo a un gris azulado claro */
 }
 
-/* FOOTER */
+/* PIE DE PÁGINA */
 footer {
-    width: 100%;
-    background-color: #071c36;
-    color: #ffffff;
-    text-align: center;
-    padding: 25px 15px;
-    margin-top: 35px;
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    background-color: #071c36; /* Establece el fondo azul oscuro */
+    color: #ffffff; /* Establece el texto blanco */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 25px 15px; /* Agrega espacio interno */
+    margin-top: 35px; /* Agrega espacio por encima del pie de página */
 }
 
 /* CARRITO */
+
+/* CONTENEDOR PRINCIPAL DEL CARRITO */
 .seccion-carrito {
-    width: 90%;
-    max-width: 1100px;
-    margin: 45px auto;
+    width: 90%; /* Ocupa el 90% del ancho disponible */
+    max-width: 1100px; /* Establece un ancho máximo de 1100 píxeles */
+    margin: 45px auto; /* Agrega 45 píxeles de margen vertical y centra horizontalmente el contenedor */
 }
 
+/* TÍTULO DEL CARRITO */
 .seccion-carrito h1 {
-    font-size: 30px;
-    margin-bottom: 25px;
+    font-size: 30px; /* Establece el tamaño de la letra */
+    margin-bottom: 25px; /* Agrega espacio debajo del título */
 }
 
+/* LISTA QUE CONTIENE LOS PRODUCTOS DEL CARRITO */
 #contenedor-carrito {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* Elimina los marcadores predeterminados de la lista */
+    padding: 0; /* Elimina el espacio interno de la lista */
 }
 
+/* ELEMENTO INDIVIDUAL DE CADA PRODUCTO DEL CARRITO */
 .items-carrito {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    background-color: #ffffff;
-    padding: 18px;
-    margin-bottom: 15px;
-    border: 1px solid #e0e5ec;
-    border-radius: 8px;
+    display: flex; /* Activa Flexbox para distribuir los elementos */
+    align-items: center; /* Centra verticalmente la imagen, el nombre y los botones */
+    justify-content: space-between; /* Distribuye los elementos dejando espacio entre ellos */
+    gap: 20px; /* Establece una separación de 20 píxeles */
+    background-color: #ffffff; /* Establece el fondo blanco */
+    padding: 18px; /* Agrega espacio interno */
+    margin-bottom: 15px; /* Agrega separación debajo de cada producto */
+    border: 1px solid #e0e5ec; /* Agrega un borde gris claro */
+    border-radius: 8px; /* Redondea las esquinas */
 }
 
+/* IMAGEN DE CADA PRODUCTO DEL CARRITO */
 .imagen-item {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
+    width: 90px; /* Establece el ancho de la imagen */
+    height: 90px; /* Establece la altura de la imagen */
+    object-fit: contain; /* Mantiene las proporciones de la imagen sin deformarla */
 }
 
+/* NOMBRE Y PRECIO DEL PRODUCTO */
 .nombre-item {
-    flex: 1;
-    font-weight: bold;
+    flex: 1; /* Permite que el elemento ocupe el espacio disponible */
+    font-weight: bold; /* Muestra el texto en negrita */
 }
 
+/* CONTENEDOR DE LOS BOTONES PARA MODIFICAR LA CANTIDAD */
 .botones-cantidad {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; /* Activa Flexbox para colocar los botones en una fila */
+    align-items: center; /* Centra verticalmente los elementos */
+    gap: 12px; /* Establece una separación de 12 píxeles */
 }
 
+/* BOTONES PARA AUMENTAR Y DISMINUIR LA CANTIDAD */
 .botones-cantidad button {
-    width: 30px;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    background-color: #35a9dc;
-    color: #ffffff;
-    font-size: 18px;
-    cursor: pointer;
+    width: 30px; /* Establece el ancho del botón */
+    height: 30px; /* Establece la altura del botón */
+    border: none; /* Elimina el borde */
+    border-radius: 5px; /* Redondea las esquinas */
+    background-color: #35a9dc; /* Establece el fondo azul celeste */
+    color: #ffffff; /* Establece el texto blanco */
+    font-size: 18px; /* Establece el tamaño del símbolo */
+    cursor: pointer; /* Indica que el botón es interactivo */
 }
 
+/* BOTÓN PARA ELIMINAR UN PRODUCTO DEL CARRITO */
 .boton-eliminar {
-    border: none;
-    background-color: #d93636;
-    color: #ffffff;
-    padding: 9px 13px;
-    border-radius: 5px;
-    cursor: pointer;
+    border: none; /* Elimina el borde */
+    background-color: #d93636; /* Establece el fondo rojo */
+    color: #ffffff; /* Establece el texto blanco */
+    padding: 9px 13px; /* Agrega espacio interno */
+    border-radius: 5px; /* Redondea las esquinas */
+    cursor: pointer; /* Indica que se puede hacer clic */
 }
 
+/* MENSAJE QUE SE MUESTRA CUANDO EL CARRITO ESTÁ VACÍO */
 .carrito-vacio {
-    background-color: #ffffff;
-    padding: 25px;
-    border: 1px solid #e0e5ec;
-    border-radius: 8px;
+    background-color: #ffffff; /* Establece el fondo blanco */
+    padding: 25px; /* Agrega espacio interno */
+    border: 1px solid #e0e5ec; /* Agrega un borde gris claro */
+    border-radius: 8px; /* Redondea las esquinas */
 }
 
+/* CONTENEDOR DONDE SE MUESTRA EL TOTAL DE LA COMPRA */
 .total-carrito {
-    text-align: right;
-    margin-top: 25px;
-    padding: 20px;
-    background-color: #f3f6fb;
-    border-radius: 8px;
+    text-align: right; /* Alinea el total hacia la derecha */
+    margin-top: 25px; /* Agrega espacio por encima del total */
+    padding: 20px; /* Agrega espacio interno */
+    background-color: #f3f6fb; /* Establece un fondo gris azulado claro */
+    border-radius: 8px; /* Redondea las esquinas */
 }
 
+/* CONTENEDOR DE LOS BOTONES DE ACCIONES DE COMPRA */
 .acciones-compra {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin-top: 25px;
+    display: flex; /* Activa Flexbox para organizar los botones */
+    justify-content: space-between; /* Distribuye los botones dejando espacio entre ellos */
+    align-items: center; /* Centra verticalmente los botones */
+    gap: 15px; /* Establece una separación de 15 píxeles */
+    margin-top: 25px; /* Agrega espacio por encima de los botones */
 }
 
+/* ESTILOS COMPARTIDOS POR LOS BOTONES DE COMPRA */
 .boton-seguir,
 .boton-final {
-    display: inline-block;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
+    display: inline-block; /* Permite aplicar dimensiones y espacios manteniendo el comportamiento en línea */
+    padding: 12px 20px; /* Agrega espacio interno */
+    border: none; /* Elimina el borde */
+    border-radius: 5px; /* Redondea las esquinas */
+    font-size: 15px; /* Establece el tamaño del texto */
+    font-weight: bold; /* Muestra el texto en negrita */
+    cursor: pointer; /* Indica que son elementos interactivos */
 }
 
+/* BOTÓN PARA VOLVER A LA TIENDA */
 .boton-seguir {
-    background-color: #101f35;
-    color: #ffffff;
+    background-color: #101f35; /* Establece el fondo azul oscuro */
+    color: #ffffff; /* Establece el texto blanco */
 }
 
+/* BOTÓN PARA FINALIZAR LA COMPRA */
 .boton-final {
-    background-color: #35a9dc;
-    color: #ffffff;
+    background-color: #35a9dc; /* Establece el fondo azul celeste */
+    color: #ffffff; /* Establece el texto blanco */
 }
 
+/* EFECTO AL PASAR EL CURSOR POR LOS BOTONES DE COMPRA */
 .boton-seguir:hover,
 .boton-final:hover {
-    opacity: 0.85;
+    opacity: 0.85; /* Reduce ligeramente la opacidad del botón */
 }
 
 /* TEMA OSCURO */
+
+/* ESTILOS GENERALES CUANDO EL BODY TIENE LA CLASE TEMA-OSCURO */
 body.tema-oscuro {
-    background-color: #101820;
-    color: #ffffff;
+    background-color: #101820; /* Cambia el fondo general a un color oscuro */
+    color: #ffffff; /* Cambia el texto general a blanco */
 }
 
+/* TÍTULOS DEL CARRITO EN TEMA OSCURO */
 body.tema-oscuro .seccion-carrito h1,
 body.tema-oscuro .seccion-carrito h2 {
-    color: #ffffff;
+    color: #ffffff; /* Establece los títulos en color blanco */
 }
 
+/* PRODUCTOS DEL CARRITO EN TEMA OSCURO */
 body.tema-oscuro .items-carrito {
-    background-color: #1c2a38;
-    border-color: #34475a;
-    color: #ffffff;
+    background-color: #1c2a38; /* Cambia el fondo de cada producto a un tono oscuro */
+    border-color: #34475a; /* Cambia el borde a un tono gris azulado */
+    color: #ffffff; /* Establece el texto en blanco */
 }
 
+/* NOMBRE DEL PRODUCTO EN TEMA OSCURO */
 body.tema-oscuro .nombre-item {
-    color: #ffffff;
+    color: #ffffff; /* Establece el nombre del producto en blanco */
 }
 
+/* MENSAJE DE CARRITO VACÍO EN TEMA OSCURO */
 body.tema-oscuro .carrito-vacio {
-    background-color: #1c2a38;
-    border-color: #34475a;
-    color: #ffffff;
+    background-color: #1c2a38; /* Cambia el fondo a un tono oscuro */
+    border-color: #34475a; /* Cambia el borde a un tono gris azulado */
+    color: #ffffff; /* Establece el texto en blanco */
 }
 
+/* TOTAL DE LA COMPRA EN TEMA OSCURO */
 body.tema-oscuro .total-carrito {
-    background-color: #1c2a38;
-    color: #ffffff;
+    background-color: #1c2a38; /* Cambia el fondo a un tono oscuro */
+    color: #ffffff; /* Establece el texto en blanco */
 }
 
+/* BOTÓN PARA SEGUIR COMPRANDO EN TEMA OSCURO */
 body.tema-oscuro .boton-seguir {
-    background-color: #35a9dc;
-    color: #ffffff;
+    background-color: #35a9dc; /* Cambia el fondo del botón a azul celeste */
+    color: #ffffff; /* Mantiene el texto blanco */
 }
 
 /* RESPONSIVE */
+
+/* ADAPTACIÓN PARA PANTALLAS DE HASTA 850 PÍXELES */
 @media (max-width: 850px) {
     .encabezado {
-        height: auto;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 12px;
-        padding: 12px;
+        height: auto; /* Permite que el encabezado ajuste su altura según el contenido */
+        grid-template-columns: 1fr; /* Cambia la distribución a una sola columna */
+        justify-items: center; /* Centra horizontalmente los elementos de la grilla */
+        gap: 12px; /* Establece separación entre los elementos del encabezado */
+        padding: 12px; /* Ajusta el espacio interno */
     }
 
     .encabezado nav {
-        flex-wrap: wrap;
-        gap: 15px;
+        flex-wrap: wrap; /* Permite que los enlaces pasen a otra línea si no entran */
+        gap: 15px; /* Reduce la separación entre los enlaces */
     }
 
     .acciones-encabezado {
-        justify-self: center;
+        justify-self: center; /* Centra el contenedor de acciones */
     }
 }
 
+/* ADAPTACIÓN PARA PANTALLAS DE HASTA 600 PÍXELES */
 @media (max-width: 600px) {
     .items-carrito {
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Permite que los elementos del producto pasen a otra línea */
     }
 
     .acciones-compra {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: column; /* Coloca los botones de compra uno debajo del otro */
+        align-items: stretch; /* Hace que los botones ocupen el ancho disponible */
     }
 
     .boton-seguir,
     .boton-final {
-        text-align: center;
+        text-align: center; /* Centra el texto de los botones */
     }
 
     .acciones-encabezado {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: wrap; /* Permite que las acciones pasen a otra línea */
+        justify-content: center; /* Centra horizontalmente las acciones */
     }
 }

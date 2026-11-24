@@ -1,89 +1,104 @@
+
+/* CONFIGURACIÓN GENERAL DEL FONDO DE LA PÁGINA */
 body {
-    background: #f1f3f5;
+    background: #f1f3f5; /* Establece un fondo gris claro para toda la página */
 }
 
+/* CONTENEDOR PRINCIPAL DE LA PANTALLA DE BIENVENIDA */
 .contenedor-bienvenida {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background: #f1f3f5;
+    display: flex; /* Activa Flexbox para organizar los elementos */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    padding: 20px; /* Agrega espacio interno alrededor del contenido */
+    background: #f1f3f5; /* Establece el fondo gris claro */
 }
 
+/* TARJETA QUE CONTIENE EL FORMULARIO DE BIENVENIDA */
 .tarjeta-bienvenida {
-    width: 100%;
-    max-width: 420px;
-    padding: 40px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Permite que la tarjeta ocupe todo el ancho disponible */
+    max-width: 420px; /* Establece un ancho máximo de 420 píxeles */
+    padding: 40px; /* Agrega espacio interno entre el contenido y los bordes */
+    background: #fff; /* Establece el fondo blanco */
+    border-radius: 12px; /* Redondea las esquinas de la tarjeta */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Agrega una sombra alrededor de la tarjeta */
 }
 
+/* CONTENEDOR DE LA MARCA EN LA TARJETA */
 .marca-bienvenida {
-    text-align: center;
-    margin-bottom: 30px;
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-bottom: 30px; /* Agrega espacio debajo de la marca */
 }
 
+/* TÍTULO PRINCIPAL DE LA MARCA */
 .marca-bienvenida .titulo-marca {
-    font-size: 32px;
-    font-weight: bold;
-    color: #17202a;
+    font-size: 32px; /* Establece el tamaño de la letra */
+    font-weight: bold; /* Aplica negrita al texto */
+    color: #17202a; /* Establece el color azul oscuro */
 }
 
+/* COLOR DE LA PARTE DE LA MARCA QUE ESTÁ DENTRO DEL SPAN */
 .marca-bienvenida .titulo-marca span {
-    color: #4f61ef;
+    color: #4f61ef; /* Establece un color azul para diferenciar esa parte del nombre */
 }
 
+/* TÍTULO DE BIENVENIDA DENTRO DE LA TARJETA */
 .tarjeta-bienvenida h2 {
-    margin-bottom: 25px;
-    color: #222;
+    margin-bottom: 25px; /* Agrega espacio debajo del título */
+    color: #222; /* Establece el color gris oscuro del texto */
 }
 
+/* CONTENEDOR DEL LABEL Y EL CAMPO DE TEXTO */
 .grupo-bienvenida {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 18px;
+    display: flex; /* Activa Flexbox para organizar los elementos */
+    flex-direction: column; /* Coloca el label y el input uno debajo del otro */
+    gap: 8px; /* Establece una separación de 8 píxeles entre los elementos */
+    margin-bottom: 18px; /* Agrega espacio debajo del grupo */
 }
 
+/* ETIQUETA DEL CAMPO DE NOMBRE */
 .grupo-bienvenida label {
-    font-weight: bold;
-    color: #333;
+    font-weight: bold; /* Muestra el texto en negrita */
+    color: #333; /* Establece el color gris oscuro */
 }
 
+/* CAMPO DONDE EL USUARIO INGRESA SU NOMBRE */
 .grupo-bienvenida input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 12px; /* Agrega espacio interno para facilitar la escritura */
+    border: 1px solid #ccc; /* Agrega un borde gris de un píxel */
+    border-radius: 6px; /* Redondea las esquinas del campo */
+    font-size: 15px; /* Establece el tamaño del texto */
 }
 
+/* ESTILOS DEL CAMPO CUANDO EL USUARIO LO SELECCIONA */
 .grupo-bienvenida input:focus {
-    outline: none;
-    border-color: #4f61ef;
+    outline: none; /* Elimina el contorno predeterminado del navegador */
+    border-color: #4f61ef; /* Cambia el borde a azul cuando el campo está seleccionado */
 }
 
+/* BOTÓN PARA INGRESAR A LA TIENDA */
 .boton-bienvenida {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
-    background: #4f61ef;
-    color: #fff;
-    margin-top: 8px;
-    transition: background-color 0.3s;
+    width: 100%; /* Hace que el botón ocupe todo el ancho disponible */
+    padding: 13px; /* Agrega espacio interno al botón */
+    border: none; /* Elimina el borde predeterminado */
+    border-radius: 6px; /* Redondea las esquinas */
+    cursor: pointer; /* Cambia el cursor para indicar que se puede hacer clic */
+    font-size: 15px; /* Establece el tamaño del texto */
+    font-weight: bold; /* Muestra el texto en negrita */
+    background: #4f61ef; /* Establece el fondo azul */
+    color: #fff; /* Establece el texto en blanco */
+    margin-top: 8px; /* Agrega espacio por encima del botón */
+    transition: background-color 0.3s; /* Suaviza el cambio de color durante 0.3 segundos */
 }
 
+/* CAMBIO DE COLOR DEL BOTÓN CUANDO EL CURSOR PASA POR ENCIMA */
 .boton-bienvenida:hover {
-    background: #3f4fd1;
+    background: #3f4fd1; /* Oscurece el fondo del botón al pasar el cursor */
 }
 
+/* ADAPTACIÓN PARA PANTALLAS DE HASTA 480 PÍXELES */
 @media (max-width: 480px) {
     .tarjeta-bienvenida {
-        padding: 28px 22px;
+        padding: 28px 22px; /* Reduce el espacio interno para adaptar la tarjeta a celulares */
     }
 }
