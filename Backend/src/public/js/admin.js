@@ -165,6 +165,8 @@ const formatearPrecio = precio => {
 // Función asíncrona que guarda un producto nuevo o modifica uno existente.
 const guardarProducto = async event => {
 
+    event.preventDefault();
+
     // Obtiene el ID del producto desde el campo oculto del formulario.
     const id = document.querySelector("#id-producto").value;
 
@@ -184,13 +186,6 @@ const guardarProducto = async event => {
     if (id !== "") {
         // Busca el producto existente dentro del array productos.
         const productoExistente = productos.find(p => Number(p.id) === Number(id));
-
-        // Comprueba si se encontró el producto.
-        if (!productoExistente) {
-            // Muestra un mensaje si el producto no existe.
-            mensaje.textContent = "No se encontró el producto.";
-            return;
-        }
 
         // Agrega el ID al objeto del producto.
         producto.id = Number(id);
@@ -239,15 +234,16 @@ const guardarProducto = async event => {
         // Comprueba si la respuesta del servidor contiene un error.
         if (!respuesta.ok) {
             // Genera una excepción con el mensaje recibido o uno predeterminado.
-            throw new Error(datos.message || "No se pudo guardar el producto.");
+            throw new Error(datos.message);
         }
 
         // Muestra el mensaje devuelto por el backend o un mensaje predeterminado.
-        mensaje.textContent = datos.message || "Producto guardado correctamente.";
+        mensaje.textContent = datos.message;
 
         // Limpia los campos del formulario.
         limpiarFormulario();
-
+        botonGuardar.disabled = false;
+        
         // Vuelve a obtener los productos para actualizar la tabla.
         await obtenerProductos();
     } catch (error) {
@@ -294,11 +290,6 @@ const editarProducto = id => {
 
     // Actualiza la vista previa de la imagen del producto.
     actualizarVistaPrevia();
-
-    // Desplaza la página hasta la sección del formulario.
-    document.querySelector(".seccion-formulario").scrollIntoView({
-        behavior: "smooth"
-    });
 };
 
 // ELIMINAR PRODUCTO
@@ -319,7 +310,7 @@ const eliminarProducto = async id => {
         // Comprueba si la respuesta del servidor contiene un error.
         if (!respuesta.ok) {
             // Genera una excepción con el mensaje recibido o uno predeterminado.
-            throw new Error(datos.message || "No se pudo eliminar el producto.");
+            throw new Error(datos.message);
         }
 
         // Muestra un mensaje confirmando la eliminación.
@@ -378,7 +369,7 @@ const cambiarEstadoProducto = async id => {
         // Comprueba si la respuesta del servidor contiene un error.
         if (!respuesta.ok) {
             // Genera una excepción con el mensaje recibido o uno predeterminado.
-            throw new Error(datos.message || "No se pudo modificar el estado.");
+            throw new Error(datos.message);
         }
 
         // Vuelve a obtener los productos para actualizar la tabla y las estadísticas.
@@ -429,8 +420,8 @@ const limpiarFormulario = () => {
 // VISTA PREVIA DE IMAGEN
 // Función que actualiza la imagen de vista previa del formulario.
 const actualizarVistaPrevia = () => {
-    // Obtiene la ruta de la imagen, elimina espacios y barras iniciales.
-    const ruta = document.querySelector("#imagen").value.trim().replace(/^\/+/, "");
+    // Obtiene la ruta de la imagen, elimina espacios.
+    const ruta = document.querySelector("#imagen").value.trim();
 
     // Obtiene el elemento HTML que muestra la vista previa.
     const imagen = document.querySelector("#vista-imagen");
@@ -443,14 +434,12 @@ const actualizarVistaPrevia = () => {
         // Oculta la imagen de vista previa.
         imagen.hidden = true;
     };
-
-    // Comprueba si se ingresó una ruta de imagen.
-    if (ruta !== "") {
-        // Muestra el elemento de vista previa.
-        imagen.hidden = false;
-
-        // Asigna la ruta de la imagen al atributo src.
+    
+    if(ruta.endsWith(".png")) {
         imagen.src = "/" + ruta;
+
+        // Oculta la imagen de vista previa.
+        imagen.hidden = false;
     } else {
         // Si no hay una ruta, elimina el atributo src.
         imagen.removeAttribute("src");
@@ -476,9 +465,7 @@ const btnActualizar = document.querySelector("#btn-actualizar");
 // Comprueba si existe el botón actualizar.
 if (btnActualizar) {
     // Detecta el clic sobre el botón actualizar.
-    btnActualizar.addEventListener("click", event => {
-        // Evita el comportamiento predeterminado del evento.
-        event.preventDefault();
+    btnActualizar.addEventListener("click", () => {
 
         // Vuelve a consultar los productos al backend.
         obtenerProductos();

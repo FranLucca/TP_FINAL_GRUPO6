@@ -26,7 +26,6 @@ export const getAllProductos = async (req, res) => { // Controlador asíncrono q
 	// MANEJO DE ERRORES
     try {
         const [filas, tablas] = await productoModels.selectAllProductos(); // Ejecuta la consulta para obtener todos los productos y recibe los resultados y la información adicional
-        console.log(filas); // Muestra en la consola los productos obtenidos
 
 		// DEVOLVEMOS 404 SI NO HAY PRODUCTOS
 		if (filas.length === 0) { // Comprueba si no se encontraron productos
